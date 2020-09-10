@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="QMS.GUI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="region_code" Type="System.String" Scope="User">
+      <Value Profile="(Default)">kaduna</Value>
+    </Setting>
+    <Setting Name="printer_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">POS-80C</Value>
+    </Setting>
+    <Setting Name="voices" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Microsoft Anna</Value>
+    </Setting>
+    <Setting Name="voice_rate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-2</Value>
+    </Setting>
+    <Setting Name="voice_volume" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="test_voice" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Welcome To Queue Management System</Value>
+    </Setting>
+    <Setting Name="testmode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="video_path" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\QMS Videos</Value>
+    </Setting>
+    <Setting Name="header_fontSize" Type="System.String" Scope="User">
+      <Value Profile="(Default)">23.0</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
