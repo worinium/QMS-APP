@@ -1,0 +1,790 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QMSDbModelStoreContainer" CdmEntityContainer="QmsdbEntities">
+    <EntitySetMapping Name="access_rules">
+      <EntityTypeMapping TypeName="QMSDbModel.access_rules">
+        <MappingFragment StoreEntitySet="access_rules">
+          <ScalarProperty Name="mr_code" ColumnName="mr_code" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appusers">
+      <EntityTypeMapping TypeName="QMSDbModel.appuser">
+        <MappingFragment StoreEntitySet="appuser">
+          <ScalarProperty Name="appuser_id" ColumnName="appuser_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+          <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+          <ScalarProperty Name="region_code" ColumnName="region_code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lkp_state">
+      <EntityTypeMapping TypeName="QMSDbModel.lkp_state">
+        <MappingFragment StoreEntitySet="lkp_state">
+          <ScalarProperty Name="mr_code" ColumnName="mr_code" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="location_type_upper">
+      <EntityTypeMapping TypeName="QMSDbModel.location_type_upper">
+        <MappingFragment StoreEntitySet="location_type_upper">
+          <ScalarProperty Name="mr_code" ColumnName="mr_code" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="state" ColumnName="state" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loggers">
+      <EntityTypeMapping TypeName="QMSDbModel.logger">
+        <MappingFragment StoreEntitySet="logger">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="createdate" ColumnName="createdate" />
+          <ScalarProperty Name="machinename" ColumnName="machinename" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="category" ColumnName="category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pointcloud_formats">
+      <EntityTypeMapping TypeName="QMSDbModel.pointcloud_formats">
+        <MappingFragment StoreEntitySet="pointcloud_formats">
+          <ScalarProperty Name="pcid" ColumnName="pcid" />
+          <ScalarProperty Name="srid" ColumnName="srid" />
+          <ScalarProperty Name="schema" ColumnName="schema" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="settings">
+      <EntityTypeMapping TypeName="QMSDbModel.setting">
+        <MappingFragment StoreEntitySet="setting">
+          <ScalarProperty Name="mr_code" ColumnName="mr_code" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spatial_ref_sys">
+      <EntityTypeMapping TypeName="QMSDbModel.spatial_ref_sys">
+        <MappingFragment StoreEntitySet="spatial_ref_sys">
+          <ScalarProperty Name="srid" ColumnName="srid" />
+          <ScalarProperty Name="auth_name" ColumnName="auth_name" />
+          <ScalarProperty Name="auth_srid" ColumnName="auth_srid" />
+          <ScalarProperty Name="srtext" ColumnName="srtext" />
+          <ScalarProperty Name="proj4text" ColumnName="proj4text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qms_queue">
+      <EntityTypeMapping TypeName="QMSDbModel.qms_queue">
+        <MappingFragment StoreEntitySet="qms_queue">
+          <ScalarProperty Name="queue_id" ColumnName="queue_id" />
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+          <ScalarProperty Name="queue_number" ColumnName="queue_number" />
+          <ScalarProperty Name="assigned_id" ColumnName="assigned_id" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="queue_status" ColumnName="queue_status" />
+          <ScalarProperty Name="called" ColumnName="called" />
+          <ScalarProperty Name="call_date" ColumnName="call_date" />
+          <ScalarProperty Name="seat_id" ColumnName="seat_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qms_queue_status">
+      <EntityTypeMapping TypeName="QMSDbModel.qms_queue_status">
+        <MappingFragment StoreEntitySet="qms_queue_status">
+          <ScalarProperty Name="mr_code" ColumnName="mr_code" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qms_region">
+      <EntityTypeMapping TypeName="QMSDbModel.qms_region">
+        <MappingFragment StoreEntitySet="qms_region">
+          <ScalarProperty Name="mr_code" ColumnName="mr_code" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qms_seat">
+      <EntityTypeMapping TypeName="QMSDbModel.qms_seat">
+        <MappingFragment StoreEntitySet="qms_seat">
+          <ScalarProperty Name="seat_id" ColumnName="seat_id" />
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+          <ScalarProperty Name="seat_number" ColumnName="seat_number" />
+          <ScalarProperty Name="assigned_id" ColumnName="assigned_id" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="modified_date" ColumnName="modified_date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qms_service">
+      <EntityTypeMapping TypeName="QMSDbModel.qms_service">
+        <MappingFragment StoreEntitySet="qms_service">
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+          <ScalarProperty Name="service_type" ColumnName="service_type" />
+          <ScalarProperty Name="region_code" ColumnName="region_code" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qms_service_type">
+      <EntityTypeMapping TypeName="QMSDbModel.qms_service_type">
+        <MappingFragment StoreEntitySet="qms_service_type">
+          <ScalarProperty Name="mr_code" ColumnName="mr_code" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="qms_setting">
+      <EntityTypeMapping TypeName="QMSDbModel.qms_setting">
+        <MappingFragment StoreEntitySet="qms_setting">
+          <ScalarProperty Name="mr_code" ColumnName="mr_code" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="addrs">
+      <EntityTypeMapping TypeName="QMSDbModel.addr">
+        <MappingFragment StoreEntitySet="addr">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="tlid" ColumnName="tlid" />
+          <ScalarProperty Name="fromhn" ColumnName="fromhn" />
+          <ScalarProperty Name="tohn" ColumnName="tohn" />
+          <ScalarProperty Name="side" ColumnName="side" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="plus4" ColumnName="plus4" />
+          <ScalarProperty Name="fromtyp" ColumnName="fromtyp" />
+          <ScalarProperty Name="totyp" ColumnName="totyp" />
+          <ScalarProperty Name="fromarmid" ColumnName="fromarmid" />
+          <ScalarProperty Name="toarmid" ColumnName="toarmid" />
+          <ScalarProperty Name="arid" ColumnName="arid" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="addrfeats">
+      <EntityTypeMapping TypeName="QMSDbModel.addrfeat">
+        <MappingFragment StoreEntitySet="addrfeat">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="tlid" ColumnName="tlid" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="aridl" ColumnName="aridl" />
+          <ScalarProperty Name="aridr" ColumnName="aridr" />
+          <ScalarProperty Name="linearid" ColumnName="linearid" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="lfromhn" ColumnName="lfromhn" />
+          <ScalarProperty Name="ltohn" ColumnName="ltohn" />
+          <ScalarProperty Name="rfromhn" ColumnName="rfromhn" />
+          <ScalarProperty Name="rtohn" ColumnName="rtohn" />
+          <ScalarProperty Name="zipl" ColumnName="zipl" />
+          <ScalarProperty Name="zipr" ColumnName="zipr" />
+          <ScalarProperty Name="edge_mtfcc" ColumnName="edge_mtfcc" />
+          <ScalarProperty Name="parityl" ColumnName="parityl" />
+          <ScalarProperty Name="parityr" ColumnName="parityr" />
+          <ScalarProperty Name="plus4l" ColumnName="plus4l" />
+          <ScalarProperty Name="plus4r" ColumnName="plus4r" />
+          <ScalarProperty Name="lfromtyp" ColumnName="lfromtyp" />
+          <ScalarProperty Name="ltotyp" ColumnName="ltotyp" />
+          <ScalarProperty Name="rfromtyp" ColumnName="rfromtyp" />
+          <ScalarProperty Name="rtotyp" ColumnName="rtotyp" />
+          <ScalarProperty Name="offsetl" ColumnName="offsetl" />
+          <ScalarProperty Name="offsetr" ColumnName="offsetr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bgs">
+      <EntityTypeMapping TypeName="QMSDbModel.bg">
+        <MappingFragment StoreEntitySet="bg">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="countyfp" ColumnName="countyfp" />
+          <ScalarProperty Name="tractce" ColumnName="tractce" />
+          <ScalarProperty Name="blkgrpce" ColumnName="blkgrpce" />
+          <ScalarProperty Name="bg_id" ColumnName="bg_id" />
+          <ScalarProperty Name="namelsad" ColumnName="namelsad" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="funcstat" ColumnName="funcstat" />
+          <ScalarProperty Name="aland" ColumnName="aland" />
+          <ScalarProperty Name="awater" ColumnName="awater" />
+          <ScalarProperty Name="intptlat" ColumnName="intptlat" />
+          <ScalarProperty Name="intptlon" ColumnName="intptlon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="counties">
+      <EntityTypeMapping TypeName="QMSDbModel.county">
+        <MappingFragment StoreEntitySet="county">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="countyfp" ColumnName="countyfp" />
+          <ScalarProperty Name="countyns" ColumnName="countyns" />
+          <ScalarProperty Name="cntyidfp" ColumnName="cntyidfp" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="namelsad" ColumnName="namelsad" />
+          <ScalarProperty Name="lsad" ColumnName="lsad" />
+          <ScalarProperty Name="classfp" ColumnName="classfp" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="csafp" ColumnName="csafp" />
+          <ScalarProperty Name="cbsafp" ColumnName="cbsafp" />
+          <ScalarProperty Name="metdivfp" ColumnName="metdivfp" />
+          <ScalarProperty Name="funcstat" ColumnName="funcstat" />
+          <ScalarProperty Name="aland" ColumnName="aland" />
+          <ScalarProperty Name="awater" ColumnName="awater" />
+          <ScalarProperty Name="intptlat" ColumnName="intptlat" />
+          <ScalarProperty Name="intptlon" ColumnName="intptlon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="county_lookup">
+      <EntityTypeMapping TypeName="QMSDbModel.county_lookup">
+        <MappingFragment StoreEntitySet="county_lookup">
+          <ScalarProperty Name="st_code" ColumnName="st_code" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="co_code" ColumnName="co_code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="countysub_lookup">
+      <EntityTypeMapping TypeName="QMSDbModel.countysub_lookup">
+        <MappingFragment StoreEntitySet="countysub_lookup">
+          <ScalarProperty Name="st_code" ColumnName="st_code" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="co_code" ColumnName="co_code" />
+          <ScalarProperty Name="county" ColumnName="county" />
+          <ScalarProperty Name="cs_code" ColumnName="cs_code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cousubs">
+      <EntityTypeMapping TypeName="QMSDbModel.cousub">
+        <MappingFragment StoreEntitySet="cousub">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="countyfp" ColumnName="countyfp" />
+          <ScalarProperty Name="cousubfp" ColumnName="cousubfp" />
+          <ScalarProperty Name="cousubns" ColumnName="cousubns" />
+          <ScalarProperty Name="cosbidfp" ColumnName="cosbidfp" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="namelsad" ColumnName="namelsad" />
+          <ScalarProperty Name="lsad" ColumnName="lsad" />
+          <ScalarProperty Name="classfp" ColumnName="classfp" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="cnectafp" ColumnName="cnectafp" />
+          <ScalarProperty Name="nectafp" ColumnName="nectafp" />
+          <ScalarProperty Name="nctadvfp" ColumnName="nctadvfp" />
+          <ScalarProperty Name="funcstat" ColumnName="funcstat" />
+          <ScalarProperty Name="aland" ColumnName="aland" />
+          <ScalarProperty Name="awater" ColumnName="awater" />
+          <ScalarProperty Name="intptlat" ColumnName="intptlat" />
+          <ScalarProperty Name="intptlon" ColumnName="intptlon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="direction_lookup">
+      <EntityTypeMapping TypeName="QMSDbModel.direction_lookup">
+        <MappingFragment StoreEntitySet="direction_lookup">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="abbrev" ColumnName="abbrev" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="edges">
+      <EntityTypeMapping TypeName="QMSDbModel.edge">
+        <MappingFragment StoreEntitySet="edges">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="countyfp" ColumnName="countyfp" />
+          <ScalarProperty Name="tlid" ColumnName="tlid" />
+          <ScalarProperty Name="tfidl" ColumnName="tfidl" />
+          <ScalarProperty Name="tfidr" ColumnName="tfidr" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="smid" ColumnName="smid" />
+          <ScalarProperty Name="lfromadd" ColumnName="lfromadd" />
+          <ScalarProperty Name="ltoadd" ColumnName="ltoadd" />
+          <ScalarProperty Name="rfromadd" ColumnName="rfromadd" />
+          <ScalarProperty Name="rtoadd" ColumnName="rtoadd" />
+          <ScalarProperty Name="zipl" ColumnName="zipl" />
+          <ScalarProperty Name="zipr" ColumnName="zipr" />
+          <ScalarProperty Name="featcat" ColumnName="featcat" />
+          <ScalarProperty Name="hydroflg" ColumnName="hydroflg" />
+          <ScalarProperty Name="railflg" ColumnName="railflg" />
+          <ScalarProperty Name="roadflg" ColumnName="roadflg" />
+          <ScalarProperty Name="olfflg" ColumnName="olfflg" />
+          <ScalarProperty Name="passflg" ColumnName="passflg" />
+          <ScalarProperty Name="divroad" ColumnName="divroad" />
+          <ScalarProperty Name="exttyp" ColumnName="exttyp" />
+          <ScalarProperty Name="ttyp" ColumnName="ttyp" />
+          <ScalarProperty Name="deckedroad" ColumnName="deckedroad" />
+          <ScalarProperty Name="artpath" ColumnName="artpath" />
+          <ScalarProperty Name="persist" ColumnName="persist" />
+          <ScalarProperty Name="gcseflg" ColumnName="gcseflg" />
+          <ScalarProperty Name="offsetl" ColumnName="offsetl" />
+          <ScalarProperty Name="offsetr" ColumnName="offsetr" />
+          <ScalarProperty Name="tnidf" ColumnName="tnidf" />
+          <ScalarProperty Name="tnidt" ColumnName="tnidt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="faces">
+      <EntityTypeMapping TypeName="QMSDbModel.face">
+        <MappingFragment StoreEntitySet="faces">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="tfid" ColumnName="tfid" />
+          <ScalarProperty Name="statefp00" ColumnName="statefp00" />
+          <ScalarProperty Name="countyfp00" ColumnName="countyfp00" />
+          <ScalarProperty Name="tractce00" ColumnName="tractce00" />
+          <ScalarProperty Name="blkgrpce00" ColumnName="blkgrpce00" />
+          <ScalarProperty Name="blockce00" ColumnName="blockce00" />
+          <ScalarProperty Name="cousubfp00" ColumnName="cousubfp00" />
+          <ScalarProperty Name="submcdfp00" ColumnName="submcdfp00" />
+          <ScalarProperty Name="conctyfp00" ColumnName="conctyfp00" />
+          <ScalarProperty Name="placefp00" ColumnName="placefp00" />
+          <ScalarProperty Name="aiannhfp00" ColumnName="aiannhfp00" />
+          <ScalarProperty Name="aiannhce00" ColumnName="aiannhce00" />
+          <ScalarProperty Name="comptyp00" ColumnName="comptyp00" />
+          <ScalarProperty Name="trsubfp00" ColumnName="trsubfp00" />
+          <ScalarProperty Name="trsubce00" ColumnName="trsubce00" />
+          <ScalarProperty Name="anrcfp00" ColumnName="anrcfp00" />
+          <ScalarProperty Name="elsdlea00" ColumnName="elsdlea00" />
+          <ScalarProperty Name="scsdlea00" ColumnName="scsdlea00" />
+          <ScalarProperty Name="unsdlea00" ColumnName="unsdlea00" />
+          <ScalarProperty Name="uace00" ColumnName="uace00" />
+          <ScalarProperty Name="cd108fp" ColumnName="cd108fp" />
+          <ScalarProperty Name="sldust00" ColumnName="sldust00" />
+          <ScalarProperty Name="sldlst00" ColumnName="sldlst00" />
+          <ScalarProperty Name="vtdst00" ColumnName="vtdst00" />
+          <ScalarProperty Name="zcta5ce00" ColumnName="zcta5ce00" />
+          <ScalarProperty Name="tazce00" ColumnName="tazce00" />
+          <ScalarProperty Name="ugace00" ColumnName="ugace00" />
+          <ScalarProperty Name="puma5ce00" ColumnName="puma5ce00" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="countyfp" ColumnName="countyfp" />
+          <ScalarProperty Name="tractce" ColumnName="tractce" />
+          <ScalarProperty Name="blkgrpce" ColumnName="blkgrpce" />
+          <ScalarProperty Name="blockce" ColumnName="blockce" />
+          <ScalarProperty Name="cousubfp" ColumnName="cousubfp" />
+          <ScalarProperty Name="submcdfp" ColumnName="submcdfp" />
+          <ScalarProperty Name="conctyfp" ColumnName="conctyfp" />
+          <ScalarProperty Name="placefp" ColumnName="placefp" />
+          <ScalarProperty Name="aiannhfp" ColumnName="aiannhfp" />
+          <ScalarProperty Name="aiannhce" ColumnName="aiannhce" />
+          <ScalarProperty Name="comptyp" ColumnName="comptyp" />
+          <ScalarProperty Name="trsubfp" ColumnName="trsubfp" />
+          <ScalarProperty Name="trsubce" ColumnName="trsubce" />
+          <ScalarProperty Name="anrcfp" ColumnName="anrcfp" />
+          <ScalarProperty Name="ttractce" ColumnName="ttractce" />
+          <ScalarProperty Name="tblkgpce" ColumnName="tblkgpce" />
+          <ScalarProperty Name="elsdlea" ColumnName="elsdlea" />
+          <ScalarProperty Name="scsdlea" ColumnName="scsdlea" />
+          <ScalarProperty Name="unsdlea" ColumnName="unsdlea" />
+          <ScalarProperty Name="uace" ColumnName="uace" />
+          <ScalarProperty Name="cd111fp" ColumnName="cd111fp" />
+          <ScalarProperty Name="sldust" ColumnName="sldust" />
+          <ScalarProperty Name="sldlst" ColumnName="sldlst" />
+          <ScalarProperty Name="vtdst" ColumnName="vtdst" />
+          <ScalarProperty Name="zcta5ce" ColumnName="zcta5ce" />
+          <ScalarProperty Name="tazce" ColumnName="tazce" />
+          <ScalarProperty Name="ugace" ColumnName="ugace" />
+          <ScalarProperty Name="puma5ce" ColumnName="puma5ce" />
+          <ScalarProperty Name="csafp" ColumnName="csafp" />
+          <ScalarProperty Name="cbsafp" ColumnName="cbsafp" />
+          <ScalarProperty Name="metdivfp" ColumnName="metdivfp" />
+          <ScalarProperty Name="cnectafp" ColumnName="cnectafp" />
+          <ScalarProperty Name="nectafp" ColumnName="nectafp" />
+          <ScalarProperty Name="nctadvfp" ColumnName="nctadvfp" />
+          <ScalarProperty Name="lwflag" ColumnName="lwflag" />
+          <ScalarProperty Name="offset" ColumnName="offset" />
+          <ScalarProperty Name="atotal" ColumnName="atotal" />
+          <ScalarProperty Name="intptlat" ColumnName="intptlat" />
+          <ScalarProperty Name="intptlon" ColumnName="intptlon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="featnames">
+      <EntityTypeMapping TypeName="QMSDbModel.featname">
+        <MappingFragment StoreEntitySet="featnames">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="tlid" ColumnName="tlid" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="predirabrv" ColumnName="predirabrv" />
+          <ScalarProperty Name="pretypabrv" ColumnName="pretypabrv" />
+          <ScalarProperty Name="prequalabr" ColumnName="prequalabr" />
+          <ScalarProperty Name="sufdirabrv" ColumnName="sufdirabrv" />
+          <ScalarProperty Name="suftypabrv" ColumnName="suftypabrv" />
+          <ScalarProperty Name="sufqualabr" ColumnName="sufqualabr" />
+          <ScalarProperty Name="predir" ColumnName="predir" />
+          <ScalarProperty Name="pretyp" ColumnName="pretyp" />
+          <ScalarProperty Name="prequal" ColumnName="prequal" />
+          <ScalarProperty Name="sufdir" ColumnName="sufdir" />
+          <ScalarProperty Name="suftyp" ColumnName="suftyp" />
+          <ScalarProperty Name="sufqual" ColumnName="sufqual" />
+          <ScalarProperty Name="linearid" ColumnName="linearid" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="paflag" ColumnName="paflag" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="geocode_settings">
+      <EntityTypeMapping TypeName="QMSDbModel.geocode_settings">
+        <MappingFragment StoreEntitySet="geocode_settings">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="setting" ColumnName="setting" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="short_desc" ColumnName="short_desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="geocode_settings_default">
+      <EntityTypeMapping TypeName="QMSDbModel.geocode_settings_default">
+        <MappingFragment StoreEntitySet="geocode_settings_default">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="setting" ColumnName="setting" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="short_desc" ColumnName="short_desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loader_lookuptables">
+      <EntityTypeMapping TypeName="QMSDbModel.loader_lookuptables">
+        <MappingFragment StoreEntitySet="loader_lookuptables">
+          <ScalarProperty Name="process_order" ColumnName="process_order" />
+          <ScalarProperty Name="lookup_name" ColumnName="lookup_name" />
+          <ScalarProperty Name="table_name" ColumnName="table_name" />
+          <ScalarProperty Name="single_mode" ColumnName="single_mode" />
+          <ScalarProperty Name="load" ColumnName="load" />
+          <ScalarProperty Name="level_county" ColumnName="level_county" />
+          <ScalarProperty Name="level_state" ColumnName="level_state" />
+          <ScalarProperty Name="level_nation" ColumnName="level_nation" />
+          <ScalarProperty Name="post_load_process" ColumnName="post_load_process" />
+          <ScalarProperty Name="single_geom_mode" ColumnName="single_geom_mode" />
+          <ScalarProperty Name="insert_mode" ColumnName="insert_mode" />
+          <ScalarProperty Name="pre_load_process" ColumnName="pre_load_process" />
+          <ScalarProperty Name="website_root_override" ColumnName="website_root_override" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loader_platform">
+      <EntityTypeMapping TypeName="QMSDbModel.loader_platform">
+        <MappingFragment StoreEntitySet="loader_platform">
+          <ScalarProperty Name="os" ColumnName="os" />
+          <ScalarProperty Name="declare_sect" ColumnName="declare_sect" />
+          <ScalarProperty Name="pgbin" ColumnName="pgbin" />
+          <ScalarProperty Name="wget" ColumnName="wget" />
+          <ScalarProperty Name="unzip_command" ColumnName="unzip_command" />
+          <ScalarProperty Name="psql" ColumnName="psql" />
+          <ScalarProperty Name="path_sep" ColumnName="path_sep" />
+          <ScalarProperty Name="loader" ColumnName="loader" />
+          <ScalarProperty Name="environ_set_command" ColumnName="environ_set_command" />
+          <ScalarProperty Name="county_process_command" ColumnName="county_process_command" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loader_variables">
+      <EntityTypeMapping TypeName="QMSDbModel.loader_variables">
+        <MappingFragment StoreEntitySet="loader_variables">
+          <ScalarProperty Name="tiger_year" ColumnName="tiger_year" />
+          <ScalarProperty Name="website_root" ColumnName="website_root" />
+          <ScalarProperty Name="staging_fold" ColumnName="staging_fold" />
+          <ScalarProperty Name="data_schema" ColumnName="data_schema" />
+          <ScalarProperty Name="staging_schema" ColumnName="staging_schema" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagc_gaz">
+      <EntityTypeMapping TypeName="QMSDbModel.pagc_gaz">
+        <MappingFragment StoreEntitySet="pagc_gaz">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="seq" ColumnName="seq" />
+          <ScalarProperty Name="word" ColumnName="word" />
+          <ScalarProperty Name="stdword" ColumnName="stdword" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="is_custom" ColumnName="is_custom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagc_lex">
+      <EntityTypeMapping TypeName="QMSDbModel.pagc_lex">
+        <MappingFragment StoreEntitySet="pagc_lex">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="seq" ColumnName="seq" />
+          <ScalarProperty Name="word" ColumnName="word" />
+          <ScalarProperty Name="stdword" ColumnName="stdword" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="is_custom" ColumnName="is_custom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagc_rules">
+      <EntityTypeMapping TypeName="QMSDbModel.pagc_rules">
+        <MappingFragment StoreEntitySet="pagc_rules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rule" ColumnName="rule" />
+          <ScalarProperty Name="is_custom" ColumnName="is_custom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="places">
+      <EntityTypeMapping TypeName="QMSDbModel.place">
+        <MappingFragment StoreEntitySet="place">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="placefp" ColumnName="placefp" />
+          <ScalarProperty Name="placens" ColumnName="placens" />
+          <ScalarProperty Name="plcidfp" ColumnName="plcidfp" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="namelsad" ColumnName="namelsad" />
+          <ScalarProperty Name="lsad" ColumnName="lsad" />
+          <ScalarProperty Name="classfp" ColumnName="classfp" />
+          <ScalarProperty Name="cpi" ColumnName="cpi" />
+          <ScalarProperty Name="pcicbsa" ColumnName="pcicbsa" />
+          <ScalarProperty Name="pcinecta" ColumnName="pcinecta" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="funcstat" ColumnName="funcstat" />
+          <ScalarProperty Name="aland" ColumnName="aland" />
+          <ScalarProperty Name="awater" ColumnName="awater" />
+          <ScalarProperty Name="intptlat" ColumnName="intptlat" />
+          <ScalarProperty Name="intptlon" ColumnName="intptlon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="place_lookup">
+      <EntityTypeMapping TypeName="QMSDbModel.place_lookup">
+        <MappingFragment StoreEntitySet="place_lookup">
+          <ScalarProperty Name="st_code" ColumnName="st_code" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="pl_code" ColumnName="pl_code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="secondary_unit_lookup">
+      <EntityTypeMapping TypeName="QMSDbModel.secondary_unit_lookup">
+        <MappingFragment StoreEntitySet="secondary_unit_lookup">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="abbrev" ColumnName="abbrev" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="states">
+      <EntityTypeMapping TypeName="QMSDbModel.state">
+        <MappingFragment StoreEntitySet="state">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="division" ColumnName="division" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="statens" ColumnName="statens" />
+          <ScalarProperty Name="stusps" ColumnName="stusps" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lsad" ColumnName="lsad" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="funcstat" ColumnName="funcstat" />
+          <ScalarProperty Name="aland" ColumnName="aland" />
+          <ScalarProperty Name="awater" ColumnName="awater" />
+          <ScalarProperty Name="intptlat" ColumnName="intptlat" />
+          <ScalarProperty Name="intptlon" ColumnName="intptlon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="state_lookup">
+      <EntityTypeMapping TypeName="QMSDbModel.state_lookup">
+        <MappingFragment StoreEntitySet="state_lookup">
+          <ScalarProperty Name="st_code" ColumnName="st_code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="abbrev" ColumnName="abbrev" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="street_type_lookup">
+      <EntityTypeMapping TypeName="QMSDbModel.street_type_lookup">
+        <MappingFragment StoreEntitySet="street_type_lookup">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="abbrev" ColumnName="abbrev" />
+          <ScalarProperty Name="is_hw" ColumnName="is_hw" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabblocks">
+      <EntityTypeMapping TypeName="QMSDbModel.tabblock">
+        <MappingFragment StoreEntitySet="tabblock">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="countyfp" ColumnName="countyfp" />
+          <ScalarProperty Name="tractce" ColumnName="tractce" />
+          <ScalarProperty Name="blockce" ColumnName="blockce" />
+          <ScalarProperty Name="tabblock_id" ColumnName="tabblock_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="ur" ColumnName="ur" />
+          <ScalarProperty Name="uace" ColumnName="uace" />
+          <ScalarProperty Name="funcstat" ColumnName="funcstat" />
+          <ScalarProperty Name="aland" ColumnName="aland" />
+          <ScalarProperty Name="awater" ColumnName="awater" />
+          <ScalarProperty Name="intptlat" ColumnName="intptlat" />
+          <ScalarProperty Name="intptlon" ColumnName="intptlon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabblock20">
+      <EntityTypeMapping TypeName="QMSDbModel.tabblock20">
+        <MappingFragment StoreEntitySet="tabblock20">
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="countyfp" ColumnName="countyfp" />
+          <ScalarProperty Name="tractce" ColumnName="tractce" />
+          <ScalarProperty Name="blockce" ColumnName="blockce" />
+          <ScalarProperty Name="geoid" ColumnName="geoid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="ur" ColumnName="ur" />
+          <ScalarProperty Name="uace" ColumnName="uace" />
+          <ScalarProperty Name="uatype" ColumnName="uatype" />
+          <ScalarProperty Name="funcstat" ColumnName="funcstat" />
+          <ScalarProperty Name="aland" ColumnName="aland" />
+          <ScalarProperty Name="awater" ColumnName="awater" />
+          <ScalarProperty Name="intptlat" ColumnName="intptlat" />
+          <ScalarProperty Name="intptlon" ColumnName="intptlon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tracts">
+      <EntityTypeMapping TypeName="QMSDbModel.tract">
+        <MappingFragment StoreEntitySet="tract">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="countyfp" ColumnName="countyfp" />
+          <ScalarProperty Name="tractce" ColumnName="tractce" />
+          <ScalarProperty Name="tract_id" ColumnName="tract_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="namelsad" ColumnName="namelsad" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="funcstat" ColumnName="funcstat" />
+          <ScalarProperty Name="aland" ColumnName="aland" />
+          <ScalarProperty Name="awater" ColumnName="awater" />
+          <ScalarProperty Name="intptlat" ColumnName="intptlat" />
+          <ScalarProperty Name="intptlon" ColumnName="intptlon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zcta5">
+      <EntityTypeMapping TypeName="QMSDbModel.zcta5">
+        <MappingFragment StoreEntitySet="zcta5">
+          <ScalarProperty Name="gid" ColumnName="gid" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="zcta5ce" ColumnName="zcta5ce" />
+          <ScalarProperty Name="classfp" ColumnName="classfp" />
+          <ScalarProperty Name="mtfcc" ColumnName="mtfcc" />
+          <ScalarProperty Name="funcstat" ColumnName="funcstat" />
+          <ScalarProperty Name="aland" ColumnName="aland" />
+          <ScalarProperty Name="awater" ColumnName="awater" />
+          <ScalarProperty Name="intptlat" ColumnName="intptlat" />
+          <ScalarProperty Name="intptlon" ColumnName="intptlon" />
+          <ScalarProperty Name="partflg" ColumnName="partflg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zip_lookup">
+      <EntityTypeMapping TypeName="QMSDbModel.zip_lookup">
+        <MappingFragment StoreEntitySet="zip_lookup">
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="st_code" ColumnName="st_code" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="co_code" ColumnName="co_code" />
+          <ScalarProperty Name="county" ColumnName="county" />
+          <ScalarProperty Name="cs_code" ColumnName="cs_code" />
+          <ScalarProperty Name="cousub" ColumnName="cousub" />
+          <ScalarProperty Name="pl_code" ColumnName="pl_code" />
+          <ScalarProperty Name="place" ColumnName="place" />
+          <ScalarProperty Name="cnt" ColumnName="cnt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zip_lookup_base">
+      <EntityTypeMapping TypeName="QMSDbModel.zip_lookup_base">
+        <MappingFragment StoreEntitySet="zip_lookup_base">
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="county" ColumnName="county" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zip_state">
+      <EntityTypeMapping TypeName="QMSDbModel.zip_state">
+        <MappingFragment StoreEntitySet="zip_state">
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="stusps" ColumnName="stusps" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zip_state_loc">
+      <EntityTypeMapping TypeName="QMSDbModel.zip_state_loc">
+        <MappingFragment StoreEntitySet="zip_state_loc">
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="stusps" ColumnName="stusps" />
+          <ScalarProperty Name="statefp" ColumnName="statefp" />
+          <ScalarProperty Name="place" ColumnName="place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="layers">
+      <EntityTypeMapping TypeName="QMSDbModel.layer">
+        <MappingFragment StoreEntitySet="layer">
+          <ScalarProperty Name="topology_id" ColumnName="topology_id" />
+          <ScalarProperty Name="layer_id" ColumnName="layer_id" />
+          <ScalarProperty Name="schema_name" ColumnName="schema_name" />
+          <ScalarProperty Name="table_name" ColumnName="table_name" />
+          <ScalarProperty Name="feature_column" ColumnName="feature_column" />
+          <ScalarProperty Name="feature_type" ColumnName="feature_type" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="child_id" ColumnName="child_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="topologies">
+      <EntityTypeMapping TypeName="QMSDbModel.topology">
+        <MappingFragment StoreEntitySet="topology">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="srid" ColumnName="srid" />
+          <ScalarProperty Name="precision" ColumnName="precision" />
+          <ScalarProperty Name="hasz" ColumnName="hasz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

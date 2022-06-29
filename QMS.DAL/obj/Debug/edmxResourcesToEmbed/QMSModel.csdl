@@ -1,0 +1,1051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QMSDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="access_rules">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="appuser">
+    <Key>
+      <PropertyRef Name="appuser_id" />
+    </Key>
+    <Property Name="appuser_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="last_name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="created_by" Type="Int32" />
+    <Property Name="created_date" Type="DateTime" Precision="6" Nullable="false" />
+    <Property Name="modified_by" Type="Int32" />
+    <Property Name="modified_date" Type="DateTime" Precision="6" Nullable="false" />
+    <Property Name="region_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="appuser1" Relationship="Self.appuser_created_by_fkey" FromRole="appuser" ToRole="appuser1" />
+    <NavigationProperty Name="appuser2" Relationship="Self.appuser_created_by_fkey" FromRole="appuser1" ToRole="appuser" />
+    <NavigationProperty Name="appuser11" Relationship="Self.appuser_modified_by_fkey" FromRole="appuser" ToRole="appuser1" />
+    <NavigationProperty Name="appuser3" Relationship="Self.appuser_modified_by_fkey" FromRole="appuser1" ToRole="appuser" />
+    <NavigationProperty Name="qms_region" Relationship="Self.appuser_region_code_fkey" FromRole="appuser" ToRole="qms_region" />
+    <NavigationProperty Name="qms_queue" Relationship="Self.qms_queue_assigned_id_fkey" FromRole="appuser" ToRole="qms_queue" />
+    <NavigationProperty Name="qms_seat" Relationship="Self.qms_seat_assigned_id_fkey" FromRole="appuser" ToRole="qms_seat" />
+    <NavigationProperty Name="qms_seat1" Relationship="Self.qms_seat_modified_by_fkey" FromRole="appuser" ToRole="qms_seat" />
+  </EntityType>
+  <EntityType Name="lkp_state">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="location_type_upper" Relationship="Self.location_type_upper_state_fkey" FromRole="lkp_state" ToRole="location_type_upper" />
+  </EntityType>
+  <EntityType Name="location_type_upper">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="lkp_state" Relationship="Self.location_type_upper_state_fkey" FromRole="location_type_upper" ToRole="lkp_state" />
+  </EntityType>
+  <EntityType Name="logger">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="createdate" Type="DateTime" Precision="6" />
+    <Property Name="machinename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="category" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="pointcloud_formats">
+    <Key>
+      <PropertyRef Name="pcid" />
+    </Key>
+    <Property Name="pcid" Type="Int32" Nullable="false" />
+    <Property Name="srid" Type="Int32" />
+    <Property Name="schema" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="setting">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="value" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="spatial_ref_sys">
+    <Key>
+      <PropertyRef Name="srid" />
+    </Key>
+    <Property Name="srid" Type="Int32" Nullable="false" />
+    <Property Name="auth_name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="auth_srid" Type="Int32" />
+    <Property Name="srtext" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+    <Property Name="proj4text" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="qms_queue">
+    <Key>
+      <PropertyRef Name="queue_id" />
+    </Key>
+    <Property Name="queue_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="service_id" Type="Int32" Nullable="false" />
+    <Property Name="queue_number" Type="Int32" Nullable="false" />
+    <Property Name="assigned_id" Type="Int32" />
+    <Property Name="created_date" Type="DateTime" Precision="6" Nullable="false" />
+    <Property Name="modified_date" Type="DateTime" Precision="6" Nullable="false" />
+    <Property Name="start_date" Type="DateTime" Precision="6" />
+    <Property Name="end_date" Type="DateTime" Precision="6" />
+    <Property Name="queue_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="called" Type="Boolean" Nullable="false" />
+    <Property Name="call_date" Type="DateTime" Precision="6" />
+    <Property Name="seat_id" Type="Int32" />
+    <NavigationProperty Name="appuser" Relationship="Self.qms_queue_assigned_id_fkey" FromRole="qms_queue" ToRole="appuser" />
+    <NavigationProperty Name="qms_queue_status" Relationship="Self.qms_queue_queue_status_fkey" FromRole="qms_queue" ToRole="qms_queue_status" />
+    <NavigationProperty Name="qms_seat" Relationship="Self.qms_queue_seat_id_fkey" FromRole="qms_queue" ToRole="qms_seat" />
+    <NavigationProperty Name="qms_service" Relationship="Self.qms_queue_service_id_fkey" FromRole="qms_queue" ToRole="qms_service" />
+  </EntityType>
+  <EntityType Name="qms_queue_status">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="qms_queue" Relationship="Self.qms_queue_queue_status_fkey" FromRole="qms_queue_status" ToRole="qms_queue" />
+  </EntityType>
+  <EntityType Name="qms_region">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="created_date" Type="DateTime" Precision="6" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="appusers" Relationship="Self.appuser_region_code_fkey" FromRole="qms_region" ToRole="appuser" />
+    <NavigationProperty Name="qms_service" Relationship="Self.qms_service_region_code_fkey" FromRole="qms_region" ToRole="qms_service" />
+  </EntityType>
+  <EntityType Name="qms_seat">
+    <Key>
+      <PropertyRef Name="seat_id" />
+    </Key>
+    <Property Name="seat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="service_id" Type="Int32" Nullable="false" />
+    <Property Name="seat_number" Type="Int32" Nullable="false" />
+    <Property Name="assigned_id" Type="Int32" Nullable="false" />
+    <Property Name="created_date" Type="DateTime" Precision="6" Nullable="false" />
+    <Property Name="modified_date" Type="DateTime" Precision="6" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="modified_by" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="appuser" Relationship="Self.qms_seat_assigned_id_fkey" FromRole="qms_seat" ToRole="appuser" />
+    <NavigationProperty Name="appuser1" Relationship="Self.qms_seat_modified_by_fkey" FromRole="qms_seat" ToRole="appuser" />
+    <NavigationProperty Name="qms_queue" Relationship="Self.qms_queue_seat_id_fkey" FromRole="qms_seat" ToRole="qms_queue" />
+    <NavigationProperty Name="qms_service" Relationship="Self.qms_seat_service_id_fkey" FromRole="qms_seat" ToRole="qms_service" />
+  </EntityType>
+  <EntityType Name="qms_service">
+    <Key>
+      <PropertyRef Name="service_id" />
+    </Key>
+    <Property Name="service_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="service_type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="region_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="created_date" Type="DateTime" Precision="6" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="qms_queue" Relationship="Self.qms_queue_service_id_fkey" FromRole="qms_service" ToRole="qms_queue" />
+    <NavigationProperty Name="qms_region" Relationship="Self.qms_service_region_code_fkey" FromRole="qms_service" ToRole="qms_region" />
+    <NavigationProperty Name="qms_seat" Relationship="Self.qms_seat_service_id_fkey" FromRole="qms_service" ToRole="qms_seat" />
+    <NavigationProperty Name="qms_service_type" Relationship="Self.qms_service_service_type_fkey" FromRole="qms_service" ToRole="qms_service_type" />
+  </EntityType>
+  <EntityType Name="qms_service_type">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="qms_service" Relationship="Self.qms_service_service_type_fkey" FromRole="qms_service_type" ToRole="qms_service" />
+  </EntityType>
+  <EntityType Name="qms_setting">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="value" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="addr">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tlid" Type="Int64" />
+    <Property Name="fromhn" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="tohn" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="side" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="zip" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="plus4" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="fromtyp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="totyp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="fromarmid" Type="Int32" />
+    <Property Name="toarmid" Type="Int32" />
+    <Property Name="arid" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="addrfeat">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tlid" Type="Int64" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="aridl" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+    <Property Name="aridr" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+    <Property Name="linearid" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+    <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lfromhn" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="ltohn" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="rfromhn" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="rtohn" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="zipl" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="zipr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="edge_mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="parityl" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="parityr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="plus4l" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="plus4r" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="lfromtyp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="ltotyp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="rfromtyp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="rtotyp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="offsetl" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="offsetr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="bg">
+    <Key>
+      <PropertyRef Name="bg_id" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="countyfp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="tractce" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="blkgrpce" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="bg_id" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="namelsad" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="funcstat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="aland" Type="Double" />
+    <Property Name="awater" Type="Double" />
+    <Property Name="intptlat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="intptlon" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="county">
+    <Key>
+      <PropertyRef Name="cntyidfp" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="countyfp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="countyns" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="cntyidfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="namelsad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lsad" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="classfp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="csafp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="cbsafp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="metdivfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="funcstat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="aland" Type="Int64" />
+    <Property Name="awater" Type="Double" />
+    <Property Name="intptlat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="intptlon" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="county_lookup">
+    <Key>
+      <PropertyRef Name="st_code" />
+      <PropertyRef Name="co_code" />
+    </Key>
+    <Property Name="st_code" Type="Int32" Nullable="false" />
+    <Property Name="state" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="co_code" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="countysub_lookup">
+    <Key>
+      <PropertyRef Name="st_code" />
+      <PropertyRef Name="co_code" />
+      <PropertyRef Name="cs_code" />
+    </Key>
+    <Property Name="st_code" Type="Int32" Nullable="false" />
+    <Property Name="state" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="co_code" Type="Int32" Nullable="false" />
+    <Property Name="county" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+    <Property Name="cs_code" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="cousub">
+    <Key>
+      <PropertyRef Name="cosbidfp" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="countyfp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="cousubfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="cousubns" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="cosbidfp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="namelsad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lsad" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="classfp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="cnectafp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="nectafp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="nctadvfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="funcstat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="aland" Type="Decimal" Precision="14" Scale="0" />
+    <Property Name="awater" Type="Decimal" Precision="14" Scale="0" />
+    <Property Name="intptlat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="intptlon" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="direction_lookup">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="abbrev" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="edge">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="countyfp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="tlid" Type="Int64" />
+    <Property Name="tfidl" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="tfidr" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="smid" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+    <Property Name="lfromadd" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="ltoadd" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="rfromadd" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="rtoadd" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="zipl" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="zipr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="featcat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="hydroflg" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="railflg" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="roadflg" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="olfflg" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="passflg" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="divroad" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="exttyp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="ttyp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="deckedroad" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="artpath" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="persist" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="gcseflg" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="offsetl" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="offsetr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="tnidf" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="tnidt" Type="Decimal" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="face">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tfid" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="statefp00" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="countyfp00" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="tractce00" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="blkgrpce00" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="blockce00" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="cousubfp00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="submcdfp00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="conctyfp00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="placefp00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="aiannhfp00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="aiannhce00" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="comptyp00" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="trsubfp00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="trsubce00" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="anrcfp00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="elsdlea00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="scsdlea00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="unsdlea00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="uace00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="cd108fp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="sldust00" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="sldlst00" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="vtdst00" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="zcta5ce00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="tazce00" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ugace00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="puma5ce00" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="countyfp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="tractce" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="blkgrpce" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="blockce" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="cousubfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="submcdfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="conctyfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="placefp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="aiannhfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="aiannhce" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="comptyp" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="trsubfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="trsubce" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="anrcfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ttractce" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="tblkgpce" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="elsdlea" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="scsdlea" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="unsdlea" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="uace" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="cd111fp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="sldust" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="sldlst" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="vtdst" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="zcta5ce" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="tazce" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ugace" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="puma5ce" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="csafp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="cbsafp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="metdivfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="cnectafp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="nectafp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="nctadvfp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="lwflag" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="offset" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="atotal" Type="Double" />
+    <Property Name="intptlat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="intptlon" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="featname">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tlid" Type="Int64" />
+    <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="predirabrv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="pretypabrv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="prequalabr" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="sufdirabrv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="suftypabrv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sufqualabr" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="predir" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="pretyp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="prequal" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="sufdir" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="suftyp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="sufqual" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="linearid" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="paflag" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="geocode_settings">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="setting" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="unit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="short_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="geocode_settings_default">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="setting" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="unit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="short_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="loader_lookuptables">
+    <Key>
+      <PropertyRef Name="lookup_name" />
+    </Key>
+    <Property Name="process_order" Type="Int32" Nullable="false" />
+    <Property Name="lookup_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="table_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="single_mode" Type="Boolean" Nullable="false" />
+    <Property Name="load" Type="Boolean" Nullable="false" />
+    <Property Name="level_county" Type="Boolean" Nullable="false" />
+    <Property Name="level_state" Type="Boolean" Nullable="false" />
+    <Property Name="level_nation" Type="Boolean" Nullable="false" />
+    <Property Name="post_load_process" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="single_geom_mode" Type="Boolean" />
+    <Property Name="insert_mode" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="pre_load_process" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="website_root_override" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="loader_platform">
+    <Key>
+      <PropertyRef Name="os" />
+    </Key>
+    <Property Name="os" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="declare_sect" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="pgbin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="wget" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="unzip_command" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="psql" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="path_sep" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="loader" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="environ_set_command" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="county_process_command" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="loader_variables">
+    <Key>
+      <PropertyRef Name="tiger_year" />
+    </Key>
+    <Property Name="tiger_year" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="website_root" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="staging_fold" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="data_schema" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="staging_schema" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="pagc_gaz">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="seq" Type="Int32" />
+    <Property Name="word" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="stdword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="token" Type="Int32" />
+    <Property Name="is_custom" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pagc_lex">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="seq" Type="Int32" />
+    <Property Name="word" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="stdword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="token" Type="Int32" />
+    <Property Name="is_custom" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pagc_rules">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rule" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="is_custom" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="place">
+    <Key>
+      <PropertyRef Name="plcidfp" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="placefp" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="placens" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="plcidfp" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="namelsad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lsad" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="classfp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="cpi" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="pcicbsa" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="pcinecta" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="funcstat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="aland" Type="Int64" />
+    <Property Name="awater" Type="Int64" />
+    <Property Name="intptlat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="intptlon" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="place_lookup">
+    <Key>
+      <PropertyRef Name="st_code" />
+      <PropertyRef Name="pl_code" />
+    </Key>
+    <Property Name="st_code" Type="Int32" Nullable="false" />
+    <Property Name="state" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="pl_code" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="secondary_unit_lookup">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="abbrev" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="state">
+    <Key>
+      <PropertyRef Name="statefp" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="region" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="division" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="statens" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="stusps" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lsad" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="funcstat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="aland" Type="Int64" />
+    <Property Name="awater" Type="Int64" />
+    <Property Name="intptlat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="intptlon" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="state_lookup">
+    <Key>
+      <PropertyRef Name="st_code" />
+    </Key>
+    <Property Name="st_code" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="abbrev" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="street_type_lookup">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="abbrev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="is_hw" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tabblock">
+    <Key>
+      <PropertyRef Name="tabblock_id" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="countyfp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="tractce" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="blockce" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="tabblock_id" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ur" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="uace" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="funcstat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="aland" Type="Double" />
+    <Property Name="awater" Type="Double" />
+    <Property Name="intptlat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="intptlon" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tabblock20">
+    <Key>
+      <PropertyRef Name="geoid" />
+    </Key>
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="countyfp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="tractce" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="blockce" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="geoid" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ur" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="uace" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="uatype" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="funcstat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="aland" Type="Double" />
+    <Property Name="awater" Type="Double" />
+    <Property Name="intptlat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="intptlon" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tract">
+    <Key>
+      <PropertyRef Name="tract_id" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="countyfp" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="tractce" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="tract_id" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="namelsad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="funcstat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="aland" Type="Double" />
+    <Property Name="awater" Type="Double" />
+    <Property Name="intptlat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="intptlon" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="zcta5">
+    <Key>
+      <PropertyRef Name="statefp" />
+      <PropertyRef Name="zcta5ce" />
+    </Key>
+    <Property Name="gid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="zcta5ce" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="classfp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="mtfcc" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="funcstat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="aland" Type="Double" />
+    <Property Name="awater" Type="Double" />
+    <Property Name="intptlat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="intptlon" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="partflg" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="zip_lookup">
+    <Key>
+      <PropertyRef Name="zip" />
+    </Key>
+    <Property Name="zip" Type="Int32" Nullable="false" />
+    <Property Name="st_code" Type="Int32" />
+    <Property Name="state" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="co_code" Type="Int32" />
+    <Property Name="county" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+    <Property Name="cs_code" Type="Int32" />
+    <Property Name="cousub" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+    <Property Name="pl_code" Type="Int32" />
+    <Property Name="place" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+    <Property Name="cnt" Type="Int32" />
+  </EntityType>
+  <EntityType Name="zip_lookup_base">
+    <Key>
+      <PropertyRef Name="zip" />
+    </Key>
+    <Property Name="zip" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="state" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="county" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="zip_state">
+    <Key>
+      <PropertyRef Name="zip" />
+      <PropertyRef Name="stusps" />
+    </Key>
+    <Property Name="zip" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="stusps" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="zip_state_loc">
+    <Key>
+      <PropertyRef Name="zip" />
+      <PropertyRef Name="stusps" />
+      <PropertyRef Name="place" />
+    </Key>
+    <Property Name="zip" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="stusps" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="statefp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="place" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="layer">
+    <Key>
+      <PropertyRef Name="topology_id" />
+      <PropertyRef Name="layer_id" />
+    </Key>
+    <Property Name="topology_id" Type="Int32" Nullable="false" />
+    <Property Name="layer_id" Type="Int32" Nullable="false" />
+    <Property Name="schema_name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="table_name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="feature_column" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="feature_type" Type="Int32" Nullable="false" />
+    <Property Name="level" Type="Int32" Nullable="false" />
+    <Property Name="child_id" Type="Int32" />
+    <NavigationProperty Name="topology" Relationship="Self.layer_topology_id_fkey" FromRole="layer" ToRole="topology" />
+  </EntityType>
+  <EntityType Name="topology">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="srid" Type="Int32" Nullable="false" />
+    <Property Name="precision" Type="Double" Nullable="false" />
+    <Property Name="hasz" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="layers" Relationship="Self.layer_topology_id_fkey" FromRole="topology" ToRole="layer" />
+  </EntityType>
+  <Association Name="appuser_created_by_fkey">
+    <End Role="appuser" Type="Self.appuser" Multiplicity="0..1" />
+    <End Role="appuser1" Type="Self.appuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appuser">
+        <PropertyRef Name="appuser_id" />
+      </Principal>
+      <Dependent Role="appuser1">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="appuser_modified_by_fkey">
+    <End Role="appuser" Type="Self.appuser" Multiplicity="0..1" />
+    <End Role="appuser1" Type="Self.appuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appuser">
+        <PropertyRef Name="appuser_id" />
+      </Principal>
+      <Dependent Role="appuser1">
+        <PropertyRef Name="modified_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="appuser_region_code_fkey">
+    <End Role="qms_region" Type="Self.qms_region" Multiplicity="0..1" />
+    <End Role="appuser" Type="Self.appuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_region">
+        <PropertyRef Name="mr_code" />
+      </Principal>
+      <Dependent Role="appuser">
+        <PropertyRef Name="region_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_queue_assigned_id_fkey">
+    <End Role="appuser" Type="Self.appuser" Multiplicity="0..1" />
+    <End Role="qms_queue" Type="Self.qms_queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appuser">
+        <PropertyRef Name="appuser_id" />
+      </Principal>
+      <Dependent Role="qms_queue">
+        <PropertyRef Name="assigned_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_seat_assigned_id_fkey">
+    <End Role="appuser" Type="Self.appuser" Multiplicity="1" />
+    <End Role="qms_seat" Type="Self.qms_seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appuser">
+        <PropertyRef Name="appuser_id" />
+      </Principal>
+      <Dependent Role="qms_seat">
+        <PropertyRef Name="assigned_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_seat_modified_by_fkey">
+    <End Role="appuser" Type="Self.appuser" Multiplicity="1" />
+    <End Role="qms_seat" Type="Self.qms_seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appuser">
+        <PropertyRef Name="appuser_id" />
+      </Principal>
+      <Dependent Role="qms_seat">
+        <PropertyRef Name="modified_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="location_type_upper_state_fkey">
+    <End Role="lkp_state" Type="Self.lkp_state" Multiplicity="1" />
+    <End Role="location_type_upper" Type="Self.location_type_upper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkp_state">
+        <PropertyRef Name="mr_code" />
+      </Principal>
+      <Dependent Role="location_type_upper">
+        <PropertyRef Name="state" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_queue_queue_status_fkey">
+    <End Role="qms_queue_status" Type="Self.qms_queue_status" Multiplicity="1" />
+    <End Role="qms_queue" Type="Self.qms_queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_queue_status">
+        <PropertyRef Name="mr_code" />
+      </Principal>
+      <Dependent Role="qms_queue">
+        <PropertyRef Name="queue_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_queue_seat_id_fkey">
+    <End Role="qms_seat" Type="Self.qms_seat" Multiplicity="0..1" />
+    <End Role="qms_queue" Type="Self.qms_queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_seat">
+        <PropertyRef Name="seat_id" />
+      </Principal>
+      <Dependent Role="qms_queue">
+        <PropertyRef Name="seat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_queue_service_id_fkey">
+    <End Role="qms_service" Type="Self.qms_service" Multiplicity="1" />
+    <End Role="qms_queue" Type="Self.qms_queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_service">
+        <PropertyRef Name="service_id" />
+      </Principal>
+      <Dependent Role="qms_queue">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_service_region_code_fkey">
+    <End Role="qms_region" Type="Self.qms_region" Multiplicity="1" />
+    <End Role="qms_service" Type="Self.qms_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_region">
+        <PropertyRef Name="mr_code" />
+      </Principal>
+      <Dependent Role="qms_service">
+        <PropertyRef Name="region_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_seat_service_id_fkey">
+    <End Role="qms_service" Type="Self.qms_service" Multiplicity="1" />
+    <End Role="qms_seat" Type="Self.qms_seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_service">
+        <PropertyRef Name="service_id" />
+      </Principal>
+      <Dependent Role="qms_seat">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_service_service_type_fkey">
+    <End Role="qms_service_type" Type="Self.qms_service_type" Multiplicity="1" />
+    <End Role="qms_service" Type="Self.qms_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_service_type">
+        <PropertyRef Name="mr_code" />
+      </Principal>
+      <Dependent Role="qms_service">
+        <PropertyRef Name="service_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="layer_topology_id_fkey">
+    <End Role="topology" Type="Self.topology" Multiplicity="1" />
+    <End Role="layer" Type="Self.layer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="topology">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="layer">
+        <PropertyRef Name="topology_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QmsdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="access_rules" EntityType="Self.access_rules" />
+    <EntitySet Name="appusers" EntityType="Self.appuser" />
+    <EntitySet Name="lkp_state" EntityType="Self.lkp_state" />
+    <EntitySet Name="location_type_upper" EntityType="Self.location_type_upper" />
+    <EntitySet Name="loggers" EntityType="Self.logger" />
+    <EntitySet Name="pointcloud_formats" EntityType="Self.pointcloud_formats" />
+    <EntitySet Name="settings" EntityType="Self.setting" />
+    <EntitySet Name="spatial_ref_sys" EntityType="Self.spatial_ref_sys" />
+    <EntitySet Name="qms_queue" EntityType="Self.qms_queue" />
+    <EntitySet Name="qms_queue_status" EntityType="Self.qms_queue_status" />
+    <EntitySet Name="qms_region" EntityType="Self.qms_region" />
+    <EntitySet Name="qms_seat" EntityType="Self.qms_seat" />
+    <EntitySet Name="qms_service" EntityType="Self.qms_service" />
+    <EntitySet Name="qms_service_type" EntityType="Self.qms_service_type" />
+    <EntitySet Name="qms_setting" EntityType="Self.qms_setting" />
+    <EntitySet Name="addrs" EntityType="Self.addr" />
+    <EntitySet Name="addrfeats" EntityType="Self.addrfeat" />
+    <EntitySet Name="bgs" EntityType="Self.bg" />
+    <EntitySet Name="counties" EntityType="Self.county" />
+    <EntitySet Name="county_lookup" EntityType="Self.county_lookup" />
+    <EntitySet Name="countysub_lookup" EntityType="Self.countysub_lookup" />
+    <EntitySet Name="cousubs" EntityType="Self.cousub" />
+    <EntitySet Name="direction_lookup" EntityType="Self.direction_lookup" />
+    <EntitySet Name="edges" EntityType="Self.edge" />
+    <EntitySet Name="faces" EntityType="Self.face" />
+    <EntitySet Name="featnames" EntityType="Self.featname" />
+    <EntitySet Name="geocode_settings" EntityType="Self.geocode_settings" />
+    <EntitySet Name="geocode_settings_default" EntityType="Self.geocode_settings_default" />
+    <EntitySet Name="loader_lookuptables" EntityType="Self.loader_lookuptables" />
+    <EntitySet Name="loader_platform" EntityType="Self.loader_platform" />
+    <EntitySet Name="loader_variables" EntityType="Self.loader_variables" />
+    <EntitySet Name="pagc_gaz" EntityType="Self.pagc_gaz" />
+    <EntitySet Name="pagc_lex" EntityType="Self.pagc_lex" />
+    <EntitySet Name="pagc_rules" EntityType="Self.pagc_rules" />
+    <EntitySet Name="places" EntityType="Self.place" />
+    <EntitySet Name="place_lookup" EntityType="Self.place_lookup" />
+    <EntitySet Name="secondary_unit_lookup" EntityType="Self.secondary_unit_lookup" />
+    <EntitySet Name="states" EntityType="Self.state" />
+    <EntitySet Name="state_lookup" EntityType="Self.state_lookup" />
+    <EntitySet Name="street_type_lookup" EntityType="Self.street_type_lookup" />
+    <EntitySet Name="tabblocks" EntityType="Self.tabblock" />
+    <EntitySet Name="tabblock20" EntityType="Self.tabblock20" />
+    <EntitySet Name="tracts" EntityType="Self.tract" />
+    <EntitySet Name="zcta5" EntityType="Self.zcta5" />
+    <EntitySet Name="zip_lookup" EntityType="Self.zip_lookup" />
+    <EntitySet Name="zip_lookup_base" EntityType="Self.zip_lookup_base" />
+    <EntitySet Name="zip_state" EntityType="Self.zip_state" />
+    <EntitySet Name="zip_state_loc" EntityType="Self.zip_state_loc" />
+    <EntitySet Name="layers" EntityType="Self.layer" />
+    <EntitySet Name="topologies" EntityType="Self.topology" />
+    <AssociationSet Name="appuser_created_by_fkey" Association="Self.appuser_created_by_fkey">
+      <End Role="appuser" EntitySet="appusers" />
+      <End Role="appuser1" EntitySet="appusers" />
+    </AssociationSet>
+    <AssociationSet Name="appuser_modified_by_fkey" Association="Self.appuser_modified_by_fkey">
+      <End Role="appuser" EntitySet="appusers" />
+      <End Role="appuser1" EntitySet="appusers" />
+    </AssociationSet>
+    <AssociationSet Name="appuser_region_code_fkey" Association="Self.appuser_region_code_fkey">
+      <End Role="qms_region" EntitySet="qms_region" />
+      <End Role="appuser" EntitySet="appusers" />
+    </AssociationSet>
+    <AssociationSet Name="qms_queue_assigned_id_fkey" Association="Self.qms_queue_assigned_id_fkey">
+      <End Role="appuser" EntitySet="appusers" />
+      <End Role="qms_queue" EntitySet="qms_queue" />
+    </AssociationSet>
+    <AssociationSet Name="qms_seat_assigned_id_fkey" Association="Self.qms_seat_assigned_id_fkey">
+      <End Role="appuser" EntitySet="appusers" />
+      <End Role="qms_seat" EntitySet="qms_seat" />
+    </AssociationSet>
+    <AssociationSet Name="qms_seat_modified_by_fkey" Association="Self.qms_seat_modified_by_fkey">
+      <End Role="appuser" EntitySet="appusers" />
+      <End Role="qms_seat" EntitySet="qms_seat" />
+    </AssociationSet>
+    <AssociationSet Name="location_type_upper_state_fkey" Association="Self.location_type_upper_state_fkey">
+      <End Role="lkp_state" EntitySet="lkp_state" />
+      <End Role="location_type_upper" EntitySet="location_type_upper" />
+    </AssociationSet>
+    <AssociationSet Name="qms_queue_queue_status_fkey" Association="Self.qms_queue_queue_status_fkey">
+      <End Role="qms_queue_status" EntitySet="qms_queue_status" />
+      <End Role="qms_queue" EntitySet="qms_queue" />
+    </AssociationSet>
+    <AssociationSet Name="qms_queue_seat_id_fkey" Association="Self.qms_queue_seat_id_fkey">
+      <End Role="qms_seat" EntitySet="qms_seat" />
+      <End Role="qms_queue" EntitySet="qms_queue" />
+    </AssociationSet>
+    <AssociationSet Name="qms_queue_service_id_fkey" Association="Self.qms_queue_service_id_fkey">
+      <End Role="qms_service" EntitySet="qms_service" />
+      <End Role="qms_queue" EntitySet="qms_queue" />
+    </AssociationSet>
+    <AssociationSet Name="qms_service_region_code_fkey" Association="Self.qms_service_region_code_fkey">
+      <End Role="qms_region" EntitySet="qms_region" />
+      <End Role="qms_service" EntitySet="qms_service" />
+    </AssociationSet>
+    <AssociationSet Name="qms_seat_service_id_fkey" Association="Self.qms_seat_service_id_fkey">
+      <End Role="qms_service" EntitySet="qms_service" />
+      <End Role="qms_seat" EntitySet="qms_seat" />
+    </AssociationSet>
+    <AssociationSet Name="qms_service_service_type_fkey" Association="Self.qms_service_service_type_fkey">
+      <End Role="qms_service_type" EntitySet="qms_service_type" />
+      <End Role="qms_service" EntitySet="qms_service" />
+    </AssociationSet>
+    <AssociationSet Name="layer_topology_id_fkey" Association="Self.layer_topology_id_fkey">
+      <End Role="topology" EntitySet="topologies" />
+      <End Role="layer" EntitySet="layers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

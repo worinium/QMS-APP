@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="18bc231ed623459999913bcb59f73046" Name="Diagram1">
+        <EntityTypeShape EntityType="QMSDbModel.access_rules" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.appuser" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.lkp_state" Width="1.5" PointX="7.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.location_type_upper" Width="1.5" PointX="10" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.logger" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.pointcloud_formats" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.setting" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.spatial_ref_sys" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.qms_queue" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.qms_queue_status" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.qms_region" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.qms_seat" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.qms_service" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.qms_service_type" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.qms_setting" Width="1.5" PointX="5.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.addr" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.addrfeat" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.bg" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.county" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.county_lookup" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.countysub_lookup" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.cousub" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.direction_lookup" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.edge" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.face" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.featname" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.geocode_settings" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.geocode_settings_default" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.loader_lookuptables" Width="1.5" PointX="16.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.loader_platform" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.loader_variables" Width="1.5" PointX="9.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.pagc_gaz" Width="1.5" PointX="11.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.pagc_lex" Width="1.5" PointX="13.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.pagc_rules" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.place" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.place_lookup" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.secondary_unit_lookup" Width="1.5" PointX="18.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.state" Width="1.5" PointX="18.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.state_lookup" Width="1.5" PointX="15.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.street_type_lookup" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.tabblock" Width="1.5" PointX="6.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.tabblock20" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.tract" Width="1.5" PointX="20.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.zcta5" Width="1.5" PointX="8.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.zip_lookup" Width="1.5" PointX="20.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.zip_lookup_base" Width="1.5" PointX="10.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.zip_state" Width="1.5" PointX="12.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.zip_state_loc" Width="1.5" PointX="20.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.layer" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QMSDbModel.topology" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="QMSDbModel.appuser_created_by_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.appuser_modified_by_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.appuser_region_code_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.qms_queue_assigned_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.qms_seat_assigned_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.qms_seat_modified_by_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.location_type_upper_state_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.qms_queue_queue_status_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.qms_queue_seat_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.qms_queue_service_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.qms_service_region_code_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.qms_seat_service_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.qms_service_service_type_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="QMSDbModel.layer_topology_id_fkey" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,15 @@
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\bin\Release\QMS.Services.dll.config
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\bin\Release\QMS.Services.dll
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\bin\Release\QMS.Services.pdb
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\bin\Release\EntityFramework.dll
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\bin\Release\QMS.DAL.dll
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\bin\Release\QMS.DAL.pdb
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\bin\Release\QMS.DAL.dll.config
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\bin\Release\EntityFramework.xml
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\obj\Release\QMS.Services.csproj.AssemblyReference.cache
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\obj\Release\QMS.Services.csproj.CoreCompileInputs.cache
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\obj\Release\QMS.Services.csproj.CopyComplete
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\obj\Release\QMS.Services.dll
+C:\Users\alaph\OneDrive\Desktop\QMS\QMS.Services\obj\Release\QMS.Services.pdb

@@ -1,0 +1,1063 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QMSDbModel.Store" Provider="Npgsql" ProviderManifestToken="14.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="access_rules">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="bool" />
+    <Property Name="description" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="appuser">
+    <Key>
+      <PropertyRef Name="appuser_id" />
+    </Key>
+    <Property Name="appuser_id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="60" />
+    <Property Name="last_name" Type="varchar" MaxLength="60" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="bool" Nullable="false" />
+    <Property Name="created_by" Type="int4" />
+    <Property Name="created_date" Type="timestamp" Nullable="false" />
+    <Property Name="modified_by" Type="int4" />
+    <Property Name="modified_date" Type="timestamp" Nullable="false" />
+    <Property Name="region_code" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="lkp_state">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="active" Type="bool" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="location_type_upper">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="active" Type="bool" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="state" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="logger">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="createdate" Type="timestamp" />
+    <Property Name="machinename" Type="varchar" MaxLength="50" />
+    <Property Name="message" Type="varchar" MaxLength="1000" />
+    <Property Name="category" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="pointcloud_formats">
+    <Key>
+      <PropertyRef Name="pcid" />
+    </Key>
+    <Property Name="pcid" Type="int4" Nullable="false" />
+    <Property Name="srid" Type="int4" />
+    <Property Name="schema" Type="text" />
+  </EntityType>
+  <EntityType Name="setting">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="value" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="active" Type="bool" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="spatial_ref_sys">
+    <Key>
+      <PropertyRef Name="srid" />
+    </Key>
+    <Property Name="srid" Type="int4" Nullable="false" />
+    <Property Name="auth_name" Type="varchar" MaxLength="256" />
+    <Property Name="auth_srid" Type="int4" />
+    <Property Name="srtext" Type="varchar" MaxLength="2048" />
+    <Property Name="proj4text" Type="varchar" MaxLength="2048" />
+  </EntityType>
+  <EntityType Name="qms_queue">
+    <Key>
+      <PropertyRef Name="queue_id" />
+    </Key>
+    <Property Name="queue_id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service_id" Type="int4" Nullable="false" />
+    <Property Name="queue_number" Type="int4" Nullable="false" />
+    <Property Name="assigned_id" Type="int4" />
+    <Property Name="created_date" Type="timestamp" Nullable="false" />
+    <Property Name="modified_date" Type="timestamp" Nullable="false" />
+    <Property Name="start_date" Type="timestamp" />
+    <Property Name="end_date" Type="timestamp" />
+    <Property Name="queue_status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="called" Type="bool" Nullable="false" />
+    <Property Name="call_date" Type="timestamp" />
+    <Property Name="seat_id" Type="int4" />
+  </EntityType>
+  <EntityType Name="qms_queue_status">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="active" Type="bool" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="qms_region">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="created_date" Type="timestamp" Nullable="false" />
+    <Property Name="active" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="qms_seat">
+    <Key>
+      <PropertyRef Name="seat_id" />
+    </Key>
+    <Property Name="seat_id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service_id" Type="int4" Nullable="false" />
+    <Property Name="seat_number" Type="int4" Nullable="false" />
+    <Property Name="assigned_id" Type="int4" Nullable="false" />
+    <Property Name="created_date" Type="timestamp" Nullable="false" />
+    <Property Name="modified_date" Type="timestamp" Nullable="false" />
+    <Property Name="active" Type="bool" Nullable="false" />
+    <Property Name="modified_by" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="qms_service">
+    <Key>
+      <PropertyRef Name="service_id" />
+    </Key>
+    <Property Name="service_id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service_type" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="region_code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="created_date" Type="timestamp" Nullable="false" />
+    <Property Name="active" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="qms_service_type">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="active" Type="bool" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="qms_setting">
+    <Key>
+      <PropertyRef Name="mr_code" />
+    </Key>
+    <Property Name="mr_code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="value" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="active" Type="bool" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="addr">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tlid" Type="int8" />
+    <Property Name="fromhn" Type="varchar" MaxLength="12" />
+    <Property Name="tohn" Type="varchar" MaxLength="12" />
+    <Property Name="side" Type="varchar" MaxLength="1" />
+    <Property Name="zip" Type="varchar" MaxLength="5" />
+    <Property Name="plus4" Type="varchar" MaxLength="4" />
+    <Property Name="fromtyp" Type="varchar" MaxLength="1" />
+    <Property Name="totyp" Type="varchar" MaxLength="1" />
+    <Property Name="fromarmid" Type="int4" />
+    <Property Name="toarmid" Type="int4" />
+    <Property Name="arid" Type="varchar" MaxLength="22" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.addrfeat' was excluded.-->
+  <EntityType Name="addrfeat">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tlid" Type="int8" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="aridl" Type="varchar" MaxLength="22" />
+    <Property Name="aridr" Type="varchar" MaxLength="22" />
+    <Property Name="linearid" Type="varchar" MaxLength="22" />
+    <Property Name="fullname" Type="varchar" MaxLength="100" />
+    <Property Name="lfromhn" Type="varchar" MaxLength="12" />
+    <Property Name="ltohn" Type="varchar" MaxLength="12" />
+    <Property Name="rfromhn" Type="varchar" MaxLength="12" />
+    <Property Name="rtohn" Type="varchar" MaxLength="12" />
+    <Property Name="zipl" Type="varchar" MaxLength="5" />
+    <Property Name="zipr" Type="varchar" MaxLength="5" />
+    <Property Name="edge_mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="parityl" Type="varchar" MaxLength="1" />
+    <Property Name="parityr" Type="varchar" MaxLength="1" />
+    <Property Name="plus4l" Type="varchar" MaxLength="4" />
+    <Property Name="plus4r" Type="varchar" MaxLength="4" />
+    <Property Name="lfromtyp" Type="varchar" MaxLength="1" />
+    <Property Name="ltotyp" Type="varchar" MaxLength="1" />
+    <Property Name="rfromtyp" Type="varchar" MaxLength="1" />
+    <Property Name="rtotyp" Type="varchar" MaxLength="1" />
+    <Property Name="offsetl" Type="varchar" MaxLength="1" />
+    <Property Name="offsetr" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.bg' was excluded.-->
+  <EntityType Name="bg">
+    <Key>
+      <PropertyRef Name="bg_id" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+    <Property Name="countyfp" Type="varchar" MaxLength="3" />
+    <Property Name="tractce" Type="varchar" MaxLength="6" />
+    <Property Name="blkgrpce" Type="varchar" MaxLength="1" />
+    <Property Name="bg_id" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="namelsad" Type="varchar" MaxLength="13" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="funcstat" Type="varchar" MaxLength="1" />
+    <Property Name="aland" Type="float8" />
+    <Property Name="awater" Type="float8" />
+    <Property Name="intptlat" Type="varchar" MaxLength="11" />
+    <Property Name="intptlon" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.county' was excluded.-->
+  <EntityType Name="county">
+    <Key>
+      <PropertyRef Name="cntyidfp" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+    <Property Name="countyfp" Type="varchar" MaxLength="3" />
+    <Property Name="countyns" Type="varchar" MaxLength="8" />
+    <Property Name="cntyidfp" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="namelsad" Type="varchar" MaxLength="100" />
+    <Property Name="lsad" Type="varchar" MaxLength="2" />
+    <Property Name="classfp" Type="varchar" MaxLength="2" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="csafp" Type="varchar" MaxLength="3" />
+    <Property Name="cbsafp" Type="varchar" MaxLength="5" />
+    <Property Name="metdivfp" Type="varchar" MaxLength="5" />
+    <Property Name="funcstat" Type="varchar" MaxLength="1" />
+    <Property Name="aland" Type="int8" />
+    <Property Name="awater" Type="float8" />
+    <Property Name="intptlat" Type="varchar" MaxLength="11" />
+    <Property Name="intptlon" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="county_lookup">
+    <Key>
+      <PropertyRef Name="st_code" />
+      <PropertyRef Name="co_code" />
+    </Key>
+    <Property Name="st_code" Type="int4" Nullable="false" />
+    <Property Name="state" Type="varchar" MaxLength="2" />
+    <Property Name="co_code" Type="int4" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="90" />
+  </EntityType>
+  <EntityType Name="countysub_lookup">
+    <Key>
+      <PropertyRef Name="st_code" />
+      <PropertyRef Name="co_code" />
+      <PropertyRef Name="cs_code" />
+    </Key>
+    <Property Name="st_code" Type="int4" Nullable="false" />
+    <Property Name="state" Type="varchar" MaxLength="2" />
+    <Property Name="co_code" Type="int4" Nullable="false" />
+    <Property Name="county" Type="varchar" MaxLength="90" />
+    <Property Name="cs_code" Type="int4" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="90" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.cousub' was excluded.-->
+  <EntityType Name="cousub">
+    <Key>
+      <PropertyRef Name="cosbidfp" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+    <Property Name="countyfp" Type="varchar" MaxLength="3" />
+    <Property Name="cousubfp" Type="varchar" MaxLength="5" />
+    <Property Name="cousubns" Type="varchar" MaxLength="8" />
+    <Property Name="cosbidfp" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="namelsad" Type="varchar" MaxLength="100" />
+    <Property Name="lsad" Type="varchar" MaxLength="2" />
+    <Property Name="classfp" Type="varchar" MaxLength="2" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="cnectafp" Type="varchar" MaxLength="3" />
+    <Property Name="nectafp" Type="varchar" MaxLength="5" />
+    <Property Name="nctadvfp" Type="varchar" MaxLength="5" />
+    <Property Name="funcstat" Type="varchar" MaxLength="1" />
+    <Property Name="aland" Type="numeric" Precision="14" Scale="0" />
+    <Property Name="awater" Type="numeric" Precision="14" Scale="0" />
+    <Property Name="intptlat" Type="varchar" MaxLength="11" />
+    <Property Name="intptlon" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="direction_lookup">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="abbrev" Type="varchar" MaxLength="3" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.edges' was excluded.-->
+  <EntityType Name="edges">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+    <Property Name="countyfp" Type="varchar" MaxLength="3" />
+    <Property Name="tlid" Type="int8" />
+    <Property Name="tfidl" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="tfidr" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="fullname" Type="varchar" MaxLength="100" />
+    <Property Name="smid" Type="varchar" MaxLength="22" />
+    <Property Name="lfromadd" Type="varchar" MaxLength="12" />
+    <Property Name="ltoadd" Type="varchar" MaxLength="12" />
+    <Property Name="rfromadd" Type="varchar" MaxLength="12" />
+    <Property Name="rtoadd" Type="varchar" MaxLength="12" />
+    <Property Name="zipl" Type="varchar" MaxLength="5" />
+    <Property Name="zipr" Type="varchar" MaxLength="5" />
+    <Property Name="featcat" Type="varchar" MaxLength="1" />
+    <Property Name="hydroflg" Type="varchar" MaxLength="1" />
+    <Property Name="railflg" Type="varchar" MaxLength="1" />
+    <Property Name="roadflg" Type="varchar" MaxLength="1" />
+    <Property Name="olfflg" Type="varchar" MaxLength="1" />
+    <Property Name="passflg" Type="varchar" MaxLength="1" />
+    <Property Name="divroad" Type="varchar" MaxLength="1" />
+    <Property Name="exttyp" Type="varchar" MaxLength="1" />
+    <Property Name="ttyp" Type="varchar" MaxLength="1" />
+    <Property Name="deckedroad" Type="varchar" MaxLength="1" />
+    <Property Name="artpath" Type="varchar" MaxLength="1" />
+    <Property Name="persist" Type="varchar" MaxLength="1" />
+    <Property Name="gcseflg" Type="varchar" MaxLength="1" />
+    <Property Name="offsetl" Type="varchar" MaxLength="1" />
+    <Property Name="offsetr" Type="varchar" MaxLength="1" />
+    <Property Name="tnidf" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="tnidt" Type="numeric" Precision="10" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.faces' was excluded.-->
+  <EntityType Name="faces">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tfid" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="statefp00" Type="varchar" MaxLength="2" />
+    <Property Name="countyfp00" Type="varchar" MaxLength="3" />
+    <Property Name="tractce00" Type="varchar" MaxLength="6" />
+    <Property Name="blkgrpce00" Type="varchar" MaxLength="1" />
+    <Property Name="blockce00" Type="varchar" MaxLength="4" />
+    <Property Name="cousubfp00" Type="varchar" MaxLength="5" />
+    <Property Name="submcdfp00" Type="varchar" MaxLength="5" />
+    <Property Name="conctyfp00" Type="varchar" MaxLength="5" />
+    <Property Name="placefp00" Type="varchar" MaxLength="5" />
+    <Property Name="aiannhfp00" Type="varchar" MaxLength="5" />
+    <Property Name="aiannhce00" Type="varchar" MaxLength="4" />
+    <Property Name="comptyp00" Type="varchar" MaxLength="1" />
+    <Property Name="trsubfp00" Type="varchar" MaxLength="5" />
+    <Property Name="trsubce00" Type="varchar" MaxLength="3" />
+    <Property Name="anrcfp00" Type="varchar" MaxLength="5" />
+    <Property Name="elsdlea00" Type="varchar" MaxLength="5" />
+    <Property Name="scsdlea00" Type="varchar" MaxLength="5" />
+    <Property Name="unsdlea00" Type="varchar" MaxLength="5" />
+    <Property Name="uace00" Type="varchar" MaxLength="5" />
+    <Property Name="cd108fp" Type="varchar" MaxLength="2" />
+    <Property Name="sldust00" Type="varchar" MaxLength="3" />
+    <Property Name="sldlst00" Type="varchar" MaxLength="3" />
+    <Property Name="vtdst00" Type="varchar" MaxLength="6" />
+    <Property Name="zcta5ce00" Type="varchar" MaxLength="5" />
+    <Property Name="tazce00" Type="varchar" MaxLength="6" />
+    <Property Name="ugace00" Type="varchar" MaxLength="5" />
+    <Property Name="puma5ce00" Type="varchar" MaxLength="5" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+    <Property Name="countyfp" Type="varchar" MaxLength="3" />
+    <Property Name="tractce" Type="varchar" MaxLength="6" />
+    <Property Name="blkgrpce" Type="varchar" MaxLength="1" />
+    <Property Name="blockce" Type="varchar" MaxLength="4" />
+    <Property Name="cousubfp" Type="varchar" MaxLength="5" />
+    <Property Name="submcdfp" Type="varchar" MaxLength="5" />
+    <Property Name="conctyfp" Type="varchar" MaxLength="5" />
+    <Property Name="placefp" Type="varchar" MaxLength="5" />
+    <Property Name="aiannhfp" Type="varchar" MaxLength="5" />
+    <Property Name="aiannhce" Type="varchar" MaxLength="4" />
+    <Property Name="comptyp" Type="varchar" MaxLength="1" />
+    <Property Name="trsubfp" Type="varchar" MaxLength="5" />
+    <Property Name="trsubce" Type="varchar" MaxLength="3" />
+    <Property Name="anrcfp" Type="varchar" MaxLength="5" />
+    <Property Name="ttractce" Type="varchar" MaxLength="6" />
+    <Property Name="tblkgpce" Type="varchar" MaxLength="1" />
+    <Property Name="elsdlea" Type="varchar" MaxLength="5" />
+    <Property Name="scsdlea" Type="varchar" MaxLength="5" />
+    <Property Name="unsdlea" Type="varchar" MaxLength="5" />
+    <Property Name="uace" Type="varchar" MaxLength="5" />
+    <Property Name="cd111fp" Type="varchar" MaxLength="2" />
+    <Property Name="sldust" Type="varchar" MaxLength="3" />
+    <Property Name="sldlst" Type="varchar" MaxLength="3" />
+    <Property Name="vtdst" Type="varchar" MaxLength="6" />
+    <Property Name="zcta5ce" Type="varchar" MaxLength="5" />
+    <Property Name="tazce" Type="varchar" MaxLength="6" />
+    <Property Name="ugace" Type="varchar" MaxLength="5" />
+    <Property Name="puma5ce" Type="varchar" MaxLength="5" />
+    <Property Name="csafp" Type="varchar" MaxLength="3" />
+    <Property Name="cbsafp" Type="varchar" MaxLength="5" />
+    <Property Name="metdivfp" Type="varchar" MaxLength="5" />
+    <Property Name="cnectafp" Type="varchar" MaxLength="3" />
+    <Property Name="nectafp" Type="varchar" MaxLength="5" />
+    <Property Name="nctadvfp" Type="varchar" MaxLength="5" />
+    <Property Name="lwflag" Type="varchar" MaxLength="1" />
+    <Property Name="offset" Type="varchar" MaxLength="1" />
+    <Property Name="atotal" Type="float8" />
+    <Property Name="intptlat" Type="varchar" MaxLength="11" />
+    <Property Name="intptlon" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="featnames">
+    <Key>
+      <PropertyRef Name="gid" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tlid" Type="int8" />
+    <Property Name="fullname" Type="varchar" MaxLength="100" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="predirabrv" Type="varchar" MaxLength="15" />
+    <Property Name="pretypabrv" Type="varchar" MaxLength="50" />
+    <Property Name="prequalabr" Type="varchar" MaxLength="15" />
+    <Property Name="sufdirabrv" Type="varchar" MaxLength="15" />
+    <Property Name="suftypabrv" Type="varchar" MaxLength="50" />
+    <Property Name="sufqualabr" Type="varchar" MaxLength="15" />
+    <Property Name="predir" Type="varchar" MaxLength="2" />
+    <Property Name="pretyp" Type="varchar" MaxLength="3" />
+    <Property Name="prequal" Type="varchar" MaxLength="2" />
+    <Property Name="sufdir" Type="varchar" MaxLength="2" />
+    <Property Name="suftyp" Type="varchar" MaxLength="3" />
+    <Property Name="sufqual" Type="varchar" MaxLength="2" />
+    <Property Name="linearid" Type="varchar" MaxLength="22" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="paflag" Type="varchar" MaxLength="1" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="geocode_settings">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="text" Nullable="false" />
+    <Property Name="setting" Type="text" />
+    <Property Name="unit" Type="text" />
+    <Property Name="category" Type="text" />
+    <Property Name="short_desc" Type="text" />
+  </EntityType>
+  <EntityType Name="geocode_settings_default">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="text" Nullable="false" />
+    <Property Name="setting" Type="text" />
+    <Property Name="unit" Type="text" />
+    <Property Name="category" Type="text" />
+    <Property Name="short_desc" Type="text" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type '_text' is currently not supported for the target Entity Framework version; the column 'columns_exclude' in the table 'qmsdb.tiger.loader_lookuptables' was excluded.-->
+  <EntityType Name="loader_lookuptables">
+    <Key>
+      <PropertyRef Name="lookup_name" />
+    </Key>
+    <Property Name="process_order" Type="int4" Nullable="false" />
+    <Property Name="lookup_name" Type="text" Nullable="false" />
+    <Property Name="table_name" Type="text" />
+    <Property Name="single_mode" Type="bool" Nullable="false" />
+    <Property Name="load" Type="bool" Nullable="false" />
+    <Property Name="level_county" Type="bool" Nullable="false" />
+    <Property Name="level_state" Type="bool" Nullable="false" />
+    <Property Name="level_nation" Type="bool" Nullable="false" />
+    <Property Name="post_load_process" Type="text" />
+    <Property Name="single_geom_mode" Type="bool" />
+    <Property Name="insert_mode" Type="bpchar" MaxLength="1" Nullable="false" />
+    <Property Name="pre_load_process" Type="text" />
+    <Property Name="website_root_override" Type="text" />
+  </EntityType>
+  <EntityType Name="loader_platform">
+    <Key>
+      <PropertyRef Name="os" />
+    </Key>
+    <Property Name="os" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="declare_sect" Type="text" />
+    <Property Name="pgbin" Type="text" />
+    <Property Name="wget" Type="text" />
+    <Property Name="unzip_command" Type="text" />
+    <Property Name="psql" Type="text" />
+    <Property Name="path_sep" Type="text" />
+    <Property Name="loader" Type="text" />
+    <Property Name="environ_set_command" Type="text" />
+    <Property Name="county_process_command" Type="text" />
+  </EntityType>
+  <EntityType Name="loader_variables">
+    <Key>
+      <PropertyRef Name="tiger_year" />
+    </Key>
+    <Property Name="tiger_year" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="website_root" Type="text" />
+    <Property Name="staging_fold" Type="text" />
+    <Property Name="data_schema" Type="text" />
+    <Property Name="staging_schema" Type="text" />
+  </EntityType>
+  <EntityType Name="pagc_gaz">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="seq" Type="int4" />
+    <Property Name="word" Type="text" />
+    <Property Name="stdword" Type="text" />
+    <Property Name="token" Type="int4" />
+    <Property Name="is_custom" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pagc_lex">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="seq" Type="int4" />
+    <Property Name="word" Type="text" />
+    <Property Name="stdword" Type="text" />
+    <Property Name="token" Type="int4" />
+    <Property Name="is_custom" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pagc_rules">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rule" Type="text" />
+    <Property Name="is_custom" Type="bool" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.place' was excluded.-->
+  <EntityType Name="place">
+    <Key>
+      <PropertyRef Name="plcidfp" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+    <Property Name="placefp" Type="varchar" MaxLength="5" />
+    <Property Name="placens" Type="varchar" MaxLength="8" />
+    <Property Name="plcidfp" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="namelsad" Type="varchar" MaxLength="100" />
+    <Property Name="lsad" Type="varchar" MaxLength="2" />
+    <Property Name="classfp" Type="varchar" MaxLength="2" />
+    <Property Name="cpi" Type="varchar" MaxLength="1" />
+    <Property Name="pcicbsa" Type="varchar" MaxLength="1" />
+    <Property Name="pcinecta" Type="varchar" MaxLength="1" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="funcstat" Type="varchar" MaxLength="1" />
+    <Property Name="aland" Type="int8" />
+    <Property Name="awater" Type="int8" />
+    <Property Name="intptlat" Type="varchar" MaxLength="11" />
+    <Property Name="intptlon" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="place_lookup">
+    <Key>
+      <PropertyRef Name="st_code" />
+      <PropertyRef Name="pl_code" />
+    </Key>
+    <Property Name="st_code" Type="int4" Nullable="false" />
+    <Property Name="state" Type="varchar" MaxLength="2" />
+    <Property Name="pl_code" Type="int4" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="90" />
+  </EntityType>
+  <EntityType Name="secondary_unit_lookup">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="abbrev" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.state' was excluded.-->
+  <EntityType Name="state">
+    <Key>
+      <PropertyRef Name="statefp" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="region" Type="varchar" MaxLength="2" />
+    <Property Name="division" Type="varchar" MaxLength="2" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="statens" Type="varchar" MaxLength="8" />
+    <Property Name="stusps" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="lsad" Type="varchar" MaxLength="2" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="funcstat" Type="varchar" MaxLength="1" />
+    <Property Name="aland" Type="int8" />
+    <Property Name="awater" Type="int8" />
+    <Property Name="intptlat" Type="varchar" MaxLength="11" />
+    <Property Name="intptlon" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="state_lookup">
+    <Key>
+      <PropertyRef Name="st_code" />
+    </Key>
+    <Property Name="st_code" Type="int4" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="40" />
+    <Property Name="abbrev" Type="varchar" MaxLength="3" />
+    <Property Name="statefp" Type="bpchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="street_type_lookup">
+    <Key>
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="abbrev" Type="varchar" MaxLength="50" />
+    <Property Name="is_hw" Type="bool" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.tabblock' was excluded.-->
+  <EntityType Name="tabblock">
+    <Key>
+      <PropertyRef Name="tabblock_id" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+    <Property Name="countyfp" Type="varchar" MaxLength="3" />
+    <Property Name="tractce" Type="varchar" MaxLength="6" />
+    <Property Name="blockce" Type="varchar" MaxLength="4" />
+    <Property Name="tabblock_id" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="20" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="ur" Type="varchar" MaxLength="1" />
+    <Property Name="uace" Type="varchar" MaxLength="5" />
+    <Property Name="funcstat" Type="varchar" MaxLength="1" />
+    <Property Name="aland" Type="float8" />
+    <Property Name="awater" Type="float8" />
+    <Property Name="intptlat" Type="varchar" MaxLength="11" />
+    <Property Name="intptlon" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.tabblock20' was excluded.-->
+  <EntityType Name="tabblock20">
+    <Key>
+      <PropertyRef Name="geoid" />
+    </Key>
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+    <Property Name="countyfp" Type="varchar" MaxLength="3" />
+    <Property Name="tractce" Type="varchar" MaxLength="6" />
+    <Property Name="blockce" Type="varchar" MaxLength="4" />
+    <Property Name="geoid" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="10" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="ur" Type="varchar" MaxLength="1" />
+    <Property Name="uace" Type="varchar" MaxLength="5" />
+    <Property Name="uatype" Type="varchar" MaxLength="1" />
+    <Property Name="funcstat" Type="varchar" MaxLength="1" />
+    <Property Name="aland" Type="float8" />
+    <Property Name="awater" Type="float8" />
+    <Property Name="intptlat" Type="varchar" MaxLength="11" />
+    <Property Name="intptlon" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.tract' was excluded.-->
+  <EntityType Name="tract">
+    <Key>
+      <PropertyRef Name="tract_id" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+    <Property Name="countyfp" Type="varchar" MaxLength="3" />
+    <Property Name="tractce" Type="varchar" MaxLength="6" />
+    <Property Name="tract_id" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="7" />
+    <Property Name="namelsad" Type="varchar" MaxLength="20" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="funcstat" Type="varchar" MaxLength="1" />
+    <Property Name="aland" Type="float8" />
+    <Property Name="awater" Type="float8" />
+    <Property Name="intptlat" Type="varchar" MaxLength="11" />
+    <Property Name="intptlon" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'geometry' is currently not supported for the target Entity Framework version; the column 'the_geom' in the table 'qmsdb.tiger.zcta5' was excluded.-->
+  <EntityType Name="zcta5">
+    <Key>
+      <PropertyRef Name="statefp" />
+      <PropertyRef Name="zcta5ce" />
+    </Key>
+    <Property Name="gid" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="zcta5ce" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="classfp" Type="varchar" MaxLength="2" />
+    <Property Name="mtfcc" Type="varchar" MaxLength="5" />
+    <Property Name="funcstat" Type="varchar" MaxLength="1" />
+    <Property Name="aland" Type="float8" />
+    <Property Name="awater" Type="float8" />
+    <Property Name="intptlat" Type="varchar" MaxLength="11" />
+    <Property Name="intptlon" Type="varchar" MaxLength="12" />
+    <Property Name="partflg" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="zip_lookup">
+    <Key>
+      <PropertyRef Name="zip" />
+    </Key>
+    <Property Name="zip" Type="int4" Nullable="false" />
+    <Property Name="st_code" Type="int4" />
+    <Property Name="state" Type="varchar" MaxLength="2" />
+    <Property Name="co_code" Type="int4" />
+    <Property Name="county" Type="varchar" MaxLength="90" />
+    <Property Name="cs_code" Type="int4" />
+    <Property Name="cousub" Type="varchar" MaxLength="90" />
+    <Property Name="pl_code" Type="int4" />
+    <Property Name="place" Type="varchar" MaxLength="90" />
+    <Property Name="cnt" Type="int4" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'qmsdb.tiger.zip_lookup_all' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="zip_lookup_all">
+          <Property Name="zip" Type="int4" />
+          <Property Name="st_code" Type="int4" />
+          <Property Name="state" Type="varchar" MaxLength="2" />
+          <Property Name="co_code" Type="int4" />
+          <Property Name="county" Type="varchar" MaxLength="90" />
+          <Property Name="cs_code" Type="int4" />
+          <Property Name="cousub" Type="varchar" MaxLength="90" />
+          <Property Name="pl_code" Type="int4" />
+          <Property Name="place" Type="varchar" MaxLength="90" />
+          <Property Name="cnt" Type="int4" />
+        </EntityType>-->
+  <EntityType Name="zip_lookup_base">
+    <Key>
+      <PropertyRef Name="zip" />
+    </Key>
+    <Property Name="zip" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="state" Type="varchar" MaxLength="40" />
+    <Property Name="county" Type="varchar" MaxLength="90" />
+    <Property Name="city" Type="varchar" MaxLength="90" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="zip_state">
+    <Key>
+      <PropertyRef Name="zip" />
+      <PropertyRef Name="stusps" />
+    </Key>
+    <Property Name="zip" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="stusps" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="zip_state_loc">
+    <Key>
+      <PropertyRef Name="zip" />
+      <PropertyRef Name="stusps" />
+      <PropertyRef Name="place" />
+    </Key>
+    <Property Name="zip" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="stusps" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="statefp" Type="varchar" MaxLength="2" />
+    <Property Name="place" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="layer">
+    <Key>
+      <PropertyRef Name="topology_id" />
+      <PropertyRef Name="layer_id" />
+    </Key>
+    <Property Name="topology_id" Type="int4" Nullable="false" />
+    <Property Name="layer_id" Type="int4" Nullable="false" />
+    <Property Name="schema_name" Type="varchar" MaxLength="8000" Nullable="false" />
+    <Property Name="table_name" Type="varchar" MaxLength="8000" Nullable="false" />
+    <Property Name="feature_column" Type="varchar" MaxLength="8000" Nullable="false" />
+    <Property Name="feature_type" Type="int4" Nullable="false" />
+    <Property Name="level" Type="int4" Nullable="false" />
+    <Property Name="child_id" Type="int4" />
+  </EntityType>
+  <EntityType Name="topology">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="8000" Nullable="false" />
+    <Property Name="srid" Type="int4" Nullable="false" />
+    <Property Name="precision" Type="float8" Nullable="false" />
+    <Property Name="hasz" Type="bool" Nullable="false" />
+  </EntityType>
+  <Association Name="appuser_created_by_fkey">
+    <End Role="appuser" Type="Self.appuser" Multiplicity="0..1" />
+    <End Role="appuser1" Type="Self.appuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appuser">
+        <PropertyRef Name="appuser_id" />
+      </Principal>
+      <Dependent Role="appuser1">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="appuser_modified_by_fkey">
+    <End Role="appuser" Type="Self.appuser" Multiplicity="0..1" />
+    <End Role="appuser1" Type="Self.appuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appuser">
+        <PropertyRef Name="appuser_id" />
+      </Principal>
+      <Dependent Role="appuser1">
+        <PropertyRef Name="modified_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="appuser_region_code_fkey">
+    <End Role="qms_region" Type="Self.qms_region" Multiplicity="0..1" />
+    <End Role="appuser" Type="Self.appuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_region">
+        <PropertyRef Name="mr_code" />
+      </Principal>
+      <Dependent Role="appuser">
+        <PropertyRef Name="region_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="layer_topology_id_fkey">
+    <End Role="topology" Type="Self.topology" Multiplicity="1" />
+    <End Role="layer" Type="Self.layer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="topology">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="layer">
+        <PropertyRef Name="topology_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="location_type_upper_state_fkey">
+    <End Role="lkp_state" Type="Self.lkp_state" Multiplicity="1" />
+    <End Role="location_type_upper" Type="Self.location_type_upper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkp_state">
+        <PropertyRef Name="mr_code" />
+      </Principal>
+      <Dependent Role="location_type_upper">
+        <PropertyRef Name="state" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_queue_assigned_id_fkey">
+    <End Role="appuser" Type="Self.appuser" Multiplicity="0..1" />
+    <End Role="qms_queue" Type="Self.qms_queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appuser">
+        <PropertyRef Name="appuser_id" />
+      </Principal>
+      <Dependent Role="qms_queue">
+        <PropertyRef Name="assigned_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_queue_queue_status_fkey">
+    <End Role="qms_queue_status" Type="Self.qms_queue_status" Multiplicity="1" />
+    <End Role="qms_queue" Type="Self.qms_queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_queue_status">
+        <PropertyRef Name="mr_code" />
+      </Principal>
+      <Dependent Role="qms_queue">
+        <PropertyRef Name="queue_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_queue_seat_id_fkey">
+    <End Role="qms_seat" Type="Self.qms_seat" Multiplicity="0..1" />
+    <End Role="qms_queue" Type="Self.qms_queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_seat">
+        <PropertyRef Name="seat_id" />
+      </Principal>
+      <Dependent Role="qms_queue">
+        <PropertyRef Name="seat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_queue_service_id_fkey">
+    <End Role="qms_service" Type="Self.qms_service" Multiplicity="1" />
+    <End Role="qms_queue" Type="Self.qms_queue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_service">
+        <PropertyRef Name="service_id" />
+      </Principal>
+      <Dependent Role="qms_queue">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_seat_assigned_id_fkey">
+    <End Role="appuser" Type="Self.appuser" Multiplicity="1" />
+    <End Role="qms_seat" Type="Self.qms_seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appuser">
+        <PropertyRef Name="appuser_id" />
+      </Principal>
+      <Dependent Role="qms_seat">
+        <PropertyRef Name="assigned_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_seat_modified_by_fkey">
+    <End Role="appuser" Type="Self.appuser" Multiplicity="1" />
+    <End Role="qms_seat" Type="Self.qms_seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appuser">
+        <PropertyRef Name="appuser_id" />
+      </Principal>
+      <Dependent Role="qms_seat">
+        <PropertyRef Name="modified_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_seat_service_id_fkey">
+    <End Role="qms_service" Type="Self.qms_service" Multiplicity="1" />
+    <End Role="qms_seat" Type="Self.qms_seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_service">
+        <PropertyRef Name="service_id" />
+      </Principal>
+      <Dependent Role="qms_seat">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_service_region_code_fkey">
+    <End Role="qms_region" Type="Self.qms_region" Multiplicity="1" />
+    <End Role="qms_service" Type="Self.qms_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_region">
+        <PropertyRef Name="mr_code" />
+      </Principal>
+      <Dependent Role="qms_service">
+        <PropertyRef Name="region_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="qms_service_service_type_fkey">
+    <End Role="qms_service_type" Type="Self.qms_service_type" Multiplicity="1" />
+    <End Role="qms_service" Type="Self.qms_service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="qms_service_type">
+        <PropertyRef Name="mr_code" />
+      </Principal>
+      <Dependent Role="qms_service">
+        <PropertyRef Name="service_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QMSDbModelStoreContainer">
+    <EntitySet Name="access_rules" EntityType="Self.access_rules" Schema="public" store:Type="Tables" />
+    <EntitySet Name="appuser" EntityType="Self.appuser" Schema="public" store:Type="Tables" />
+    <EntitySet Name="lkp_state" EntityType="Self.lkp_state" Schema="public" store:Type="Tables" />
+    <EntitySet Name="location_type_upper" EntityType="Self.location_type_upper" Schema="public" store:Type="Tables" />
+    <EntitySet Name="logger" EntityType="Self.logger" Schema="public" store:Type="Tables" />
+    <EntitySet Name="pointcloud_formats" EntityType="Self.pointcloud_formats" Schema="public" store:Type="Tables" />
+    <EntitySet Name="setting" EntityType="Self.setting" Schema="public" store:Type="Tables" />
+    <EntitySet Name="spatial_ref_sys" EntityType="Self.spatial_ref_sys" Schema="public" store:Type="Tables" />
+    <EntitySet Name="qms_queue" EntityType="Self.qms_queue" Schema="qms" store:Type="Tables" />
+    <EntitySet Name="qms_queue_status" EntityType="Self.qms_queue_status" Schema="qms" store:Type="Tables" />
+    <EntitySet Name="qms_region" EntityType="Self.qms_region" Schema="qms" store:Type="Tables" />
+    <EntitySet Name="qms_seat" EntityType="Self.qms_seat" Schema="qms" store:Type="Tables" />
+    <EntitySet Name="qms_service" EntityType="Self.qms_service" Schema="qms" store:Type="Tables" />
+    <EntitySet Name="qms_service_type" EntityType="Self.qms_service_type" Schema="qms" store:Type="Tables" />
+    <EntitySet Name="qms_setting" EntityType="Self.qms_setting" Schema="qms" store:Type="Tables" />
+    <EntitySet Name="addr" EntityType="Self.addr" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="addrfeat" EntityType="Self.addrfeat" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="bg" EntityType="Self.bg" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="county" EntityType="Self.county" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="county_lookup" EntityType="Self.county_lookup" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="countysub_lookup" EntityType="Self.countysub_lookup" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="cousub" EntityType="Self.cousub" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="direction_lookup" EntityType="Self.direction_lookup" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="edges" EntityType="Self.edges" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="faces" EntityType="Self.faces" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="featnames" EntityType="Self.featnames" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="geocode_settings" EntityType="Self.geocode_settings" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="geocode_settings_default" EntityType="Self.geocode_settings_default" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="loader_lookuptables" EntityType="Self.loader_lookuptables" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="loader_platform" EntityType="Self.loader_platform" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="loader_variables" EntityType="Self.loader_variables" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="pagc_gaz" EntityType="Self.pagc_gaz" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="pagc_lex" EntityType="Self.pagc_lex" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="pagc_rules" EntityType="Self.pagc_rules" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="place" EntityType="Self.place" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="place_lookup" EntityType="Self.place_lookup" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="secondary_unit_lookup" EntityType="Self.secondary_unit_lookup" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="state" EntityType="Self.state" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="state_lookup" EntityType="Self.state_lookup" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="street_type_lookup" EntityType="Self.street_type_lookup" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="tabblock" EntityType="Self.tabblock" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="tabblock20" EntityType="Self.tabblock20" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="tract" EntityType="Self.tract" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="zcta5" EntityType="Self.zcta5" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="zip_lookup" EntityType="Self.zip_lookup" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="zip_lookup_base" EntityType="Self.zip_lookup_base" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="zip_state" EntityType="Self.zip_state" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="zip_state_loc" EntityType="Self.zip_state_loc" Schema="tiger" store:Type="Tables" />
+    <EntitySet Name="layer" EntityType="Self.layer" Schema="topology" store:Type="Tables" />
+    <EntitySet Name="topology" EntityType="Self.topology" Schema="topology" store:Type="Tables" />
+    <AssociationSet Name="appuser_created_by_fkey" Association="Self.appuser_created_by_fkey">
+      <End Role="appuser" EntitySet="appuser" />
+      <End Role="appuser1" EntitySet="appuser" />
+    </AssociationSet>
+    <AssociationSet Name="appuser_modified_by_fkey" Association="Self.appuser_modified_by_fkey">
+      <End Role="appuser" EntitySet="appuser" />
+      <End Role="appuser1" EntitySet="appuser" />
+    </AssociationSet>
+    <AssociationSet Name="appuser_region_code_fkey" Association="Self.appuser_region_code_fkey">
+      <End Role="qms_region" EntitySet="qms_region" />
+      <End Role="appuser" EntitySet="appuser" />
+    </AssociationSet>
+    <AssociationSet Name="layer_topology_id_fkey" Association="Self.layer_topology_id_fkey">
+      <End Role="topology" EntitySet="topology" />
+      <End Role="layer" EntitySet="layer" />
+    </AssociationSet>
+    <AssociationSet Name="location_type_upper_state_fkey" Association="Self.location_type_upper_state_fkey">
+      <End Role="lkp_state" EntitySet="lkp_state" />
+      <End Role="location_type_upper" EntitySet="location_type_upper" />
+    </AssociationSet>
+    <AssociationSet Name="qms_queue_assigned_id_fkey" Association="Self.qms_queue_assigned_id_fkey">
+      <End Role="appuser" EntitySet="appuser" />
+      <End Role="qms_queue" EntitySet="qms_queue" />
+    </AssociationSet>
+    <AssociationSet Name="qms_queue_queue_status_fkey" Association="Self.qms_queue_queue_status_fkey">
+      <End Role="qms_queue_status" EntitySet="qms_queue_status" />
+      <End Role="qms_queue" EntitySet="qms_queue" />
+    </AssociationSet>
+    <AssociationSet Name="qms_queue_seat_id_fkey" Association="Self.qms_queue_seat_id_fkey">
+      <End Role="qms_seat" EntitySet="qms_seat" />
+      <End Role="qms_queue" EntitySet="qms_queue" />
+    </AssociationSet>
+    <AssociationSet Name="qms_queue_service_id_fkey" Association="Self.qms_queue_service_id_fkey">
+      <End Role="qms_service" EntitySet="qms_service" />
+      <End Role="qms_queue" EntitySet="qms_queue" />
+    </AssociationSet>
+    <AssociationSet Name="qms_seat_assigned_id_fkey" Association="Self.qms_seat_assigned_id_fkey">
+      <End Role="appuser" EntitySet="appuser" />
+      <End Role="qms_seat" EntitySet="qms_seat" />
+    </AssociationSet>
+    <AssociationSet Name="qms_seat_modified_by_fkey" Association="Self.qms_seat_modified_by_fkey">
+      <End Role="appuser" EntitySet="appuser" />
+      <End Role="qms_seat" EntitySet="qms_seat" />
+    </AssociationSet>
+    <AssociationSet Name="qms_seat_service_id_fkey" Association="Self.qms_seat_service_id_fkey">
+      <End Role="qms_service" EntitySet="qms_service" />
+      <End Role="qms_seat" EntitySet="qms_seat" />
+    </AssociationSet>
+    <AssociationSet Name="qms_service_region_code_fkey" Association="Self.qms_service_region_code_fkey">
+      <End Role="qms_region" EntitySet="qms_region" />
+      <End Role="qms_service" EntitySet="qms_service" />
+    </AssociationSet>
+    <AssociationSet Name="qms_service_service_type_fkey" Association="Self.qms_service_service_type_fkey">
+      <End Role="qms_service_type" EntitySet="qms_service_type" />
+      <End Role="qms_service" EntitySet="qms_service" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
